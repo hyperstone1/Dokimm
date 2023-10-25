@@ -73,10 +73,16 @@
         <div class="banner__name">
           <div class="swiper-wrapper">
             <div class="swiper-slide banner__name-slide">
-              <div class="banner__info-title">eternal classic</div>
+              <div class="banner__info-title">
+                <p>eternal</p>
+                <p>classic</p>
+              </div>
             </div>
             <div class="swiper-slide banner__name-slide">
-              <div class="banner__info-title">eternal classic</div>
+              <div class="banner__info-title">
+                <p>eternal</p>
+                <p>classic</p>
+              </div>
             </div>
           </div>
         </div>
@@ -126,10 +132,11 @@
                 fill="white"
               />
             </svg>
+            <img src="./assets/images/arrows.svg" alt="" />
           </div>
           <div class="btn-text">
-            <div class="btn-text--first">оставить</div>
-            <div class="btn-text--second">заявку</div>
+            <div class="btn-text--first">заказать</div>
+            <div class="btn-text--second">украшение</div>
           </div>
         </button>
       </div>
@@ -137,7 +144,7 @@
 
     <section class="category">
       <div class="category__container container">
-        <div class="category__top">
+        <div class="category__top wow anim-textTop">
           <div class="category__top-navigation navigation">
             <div class="navigation-prev">
               <svg
@@ -177,7 +184,14 @@
           </div>
         </div>
         <div class="category__list">
-          <div class="category__list-wrapper swiper-wrapper">
+          <div class="category__list-back wow anim-text" data-wow-duration="1s">
+            категории
+          </div>
+          <div
+            class="category__list-wrapper swiper-wrapper wow anim-category"
+            data-wow-delay="0.5s"
+            data-wow-duration="2s"
+          >
             <div class="category__list-item swiper-slide">
               <div class="category__list-number">001</div>
               <div class="category__list-img">
@@ -302,25 +316,31 @@
             даря бриллианты, <br />вы проявляете чистую <br />любовь
           </div>
         </div>
+        <div class="request__content-text-order">Закажите изделие</div>
         <div class="request__main">
           <form class="request__form">
             <div class="request__form-container">
               <div class="request__form-wrapper">
-                <input type="text" placeholder="Ваше имя" />
+                <input class="form_input" type="text" placeholder="Ваше имя" />
               </div>
               <div class="request__form-wrapper">
-                <input type="text" placeholder="e-mail" />
+                <input class="form_input" type="text" placeholder="e-mail" />
               </div>
               <div class="request__form-wrapper">
-                <input type="text" placeholder="телефон" />
+                <input
+                  class="form_input"
+                  id="phone"
+                  type="text"
+                  placeholder="телефон"
+                />
               </div>
               <div class="request__form-info">
                 Отправляя форму, вы принимаете пользовательское соглашение
               </div>
             </div>
 
-            <button class="request__btn">
-              <div class="request__btn-arrow">
+            <button class="request__btn btn">
+              <div class="request__btn-arrow btn-arrow">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="109"
@@ -333,8 +353,9 @@
                     fill="white"
                   />
                 </svg>
+                <img src="./assets/images/arrows.svg" alt="" />
               </div>
-              <div class="request__btn-text">
+              <div class="request__btn-text btn-text">
                 <div class="request__btn-text--first">оставить</div>
                 <div class="request__btn-text--second">заявку</div>
               </div>
@@ -349,8 +370,12 @@
           <div class="process__top-left">Процесс</div>
           <div class="process__top-right">создания украшений</div>
         </div>
+        <div class="process__top--mob">
+          <div class="process__top-left">Процесс создания</div>
+          <div class="process__top-right">украшений</div>
+        </div>
         <div class="process__main">
-          <button class="process__main-btn">
+          <button class="process__main-btn btn">
             <div class="process__main-play">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -371,48 +396,50 @@
             </div>
           </button>
           <div class="process__list">
-            <div class="process__list-item">
-              <div class="process__list-item--number">001</div>
-              <div class="process__list-title">Выбор камня</div>
-              <div class="process__list-description">
-                В изделии учитывается эргономика, строение пальчика, размер,
-                форма мочки и уникальные особенности каждой девушки - чистая
-                эстетика
+            <div class="process__list-wrapper swiper-wrapper">
+              <div class="process__list-item swiper-slide">
+                <div class="process__list-item--number">001</div>
+                <div class="process__list-title">Выбор камня</div>
+                <div class="process__list-description">
+                  В изделии учитывается эргономика, строение пальчика, размер,
+                  форма мочки и уникальные особенности каждой девушки - чистая
+                  эстетика
+                </div>
               </div>
-            </div>
-            <div class="process__list-item">
-              <div class="process__list-item--number">002</div>
-              <div class="process__list-title">ЗD-модель</div>
-              <div class="process__list-description">
-                В изделии учитывается эргономика, строение пальчика, размер,
-                форма мочки и уникальные особенности каждой девушки - чистая
-                эстетика
+              <div class="process__list-item swiper-slide">
+                <div class="process__list-item--number">002</div>
+                <div class="process__list-title">ЗD-модель</div>
+                <div class="process__list-description">
+                  В изделии учитывается эргономика, строение пальчика, размер,
+                  форма мочки и уникальные особенности каждой девушки - чистая
+                  эстетика
+                </div>
               </div>
-            </div>
-            <div class="process__list-item">
-              <div class="process__list-item--number">003</div>
-              <div class="process__list-title">Литьё</div>
-              <div class="process__list-description">
-                В изделии учитывается эргономика, строение пальчика, размер,
-                форма мочки и уникальные особенности каждой девушки - чистая
-                эстетика
+              <div class="process__list-item swiper-slide">
+                <div class="process__list-item--number">003</div>
+                <div class="process__list-title">Литьё</div>
+                <div class="process__list-description">
+                  В изделии учитывается эргономика, строение пальчика, размер,
+                  форма мочки и уникальные особенности каждой девушки - чистая
+                  эстетика
+                </div>
               </div>
-            </div>
-            <div class="process__list-item">
-              <div class="process__list-item--number">004</div>
-              <div class="process__list-title">Проверка</div>
-              <div class="process__list-description">
-                В изделии учитывается эргономика, строение пальчика, размер,
-                форма мочки и уникальные особенности каждой девушки - чистая
-                эстетика
+              <div class="process__list-item swiper-slide">
+                <div class="process__list-item--number">004</div>
+                <div class="process__list-title">Проверка</div>
+                <div class="process__list-description">
+                  В изделии учитывается эргономика, строение пальчика, размер,
+                  форма мочки и уникальные особенности каждой девушки - чистая
+                  эстетика
+                </div>
               </div>
-            </div>
-            <div class="process__list-item">
-              <div class="process__list-title">полировка</div>
-              <div class="process__list-description">
-                В изделии учитывается эргономика, строение пальчика, размер,
-                форма мочки и уникальные особенности каждой девушки - чистая
-                эстетика
+              <div class="process__list-item swiper-slide">
+                <div class="process__list-title">полировка</div>
+                <div class="process__list-description">
+                  В изделии учитывается эргономика, строение пальчика, размер,
+                  форма мочки и уникальные особенности каждой девушки - чистая
+                  эстетика
+                </div>
               </div>
             </div>
           </div>
@@ -488,6 +515,10 @@
               </svg>
             </div>
           </div>
+          <div class="process__pagination pagination">
+            <div class="pagination-current">1</div>
+            <div class="pagination-last">4</div>
+          </div>
         </div>
       </div>
     </section>
@@ -542,6 +573,7 @@
                     fill="white"
                   />
                 </svg>
+                <img src="./assets/images/arrows.svg" alt="" />
               </div>
               <div class="btn-text">
                 <div class="btn-text--first">заказать</div>

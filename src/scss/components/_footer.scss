@@ -86,3 +86,79 @@
     }
   }
 }
+@media (max-width: 48em) {
+  .footer {
+    &__container {
+      padding: 0 3rem 2.4rem 3rem;
+    }
+    &__top {
+      order: 1;
+      flex-direction: column;
+      align-items: center;
+    }
+    &__left {
+      order: 2;
+    }
+    &__menu {
+      flex-direction: column;
+      gap: 5.6rem;
+      &-link {
+        justify-content: center;
+        font-size: 2.6rem;
+        font-weight: 400;
+        letter-spacing: 0.65rem;
+        text-transform: uppercase;
+      }
+    }
+    &__logo {
+      margin-bottom: 8rem;
+      order: 1;
+      position: relative;
+      top: auto;
+      left: auto;
+      transform: translate(0, 0);
+    }
+    &__right {
+      margin-top: 5.6rem;
+      order: 3;
+      flex-direction: column;
+    }
+    &__bottom {
+      order: 3;
+      flex-direction: column;
+      align-items: center;
+      gap: 3.2rem;
+      &-logo {
+        order: 1;
+        gap: 2.4rem;
+        img {
+          width: 7.2rem;
+          height: 7.2rem;
+        }
+      }
+      &-rd-subtitle,
+      &-agreement,
+      &-year {
+        font-size: 2.8rem;
+        line-height: 1;
+        letter-spacing: 0.28rem;
+      }
+      &-rd {
+        order: 1;
+        &-title {
+          font-size: 3rem;
+          letter-spacing: 0.28rem;
+        }
+      }
+      &-year {
+        order: 3;
+        position: relative;
+        left: auto;
+        transform: translateX(0);
+      }
+      &-agreement {
+        order: 2;
+      }
+    }
+  }
+}

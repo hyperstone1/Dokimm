@@ -12,19 +12,33 @@ import {
 import remToPx from "../utils/rem";
 
 document.addEventListener("DOMContentLoaded", () => {
-  const pagCurSwiper1 = document.querySelector(".pagination-current");
-  const pagLastSwiper1 = document.querySelector(".pagination-last");
+  const pagCurSwiper1 = document.querySelector(
+    ".category__top-pagination .pagination-current"
+  );
+  const pagLastSwiper1 = document.querySelector(
+    ".category__top-pagination .pagination-last"
+  );
+  const bannerPag = document.querySelector(".banner__main-pagination");
+  const bannerCur = bannerPag.querySelector(".pagination-current");
+  const bannerLast = bannerPag.querySelector(".pagination-last");
   const navigationCat = document.querySelector(".category__top-navigation");
   const navigationProc = document.querySelector(".process__navigation");
   const bannerControls = document.querySelector(".banner__main-controls");
   const bannerPrev = bannerControls.querySelector(".navigation-prev");
   const bannerNext = bannerControls.querySelector(".navigation-next");
   const processItems = document.querySelectorAll(".process__list-item");
+  const process = document.querySelector(".process");
+  const processPrev = process.querySelector(".navigation-prev");
+  const processNext = process.querySelector(".navigation-next");
+  const processPagCur = process.querySelector(".pagination-current");
+  const processPagLast = process.querySelector(".pagination-last");
   const screenWidth = window.screen.width;
+  var init = false;
+  var processList;
 
   const swiper1 = new Swiper(".category__list", {
     slidesPerView: "auto",
-    spaceBetween: remToPx(27.1),
+    spaceBetween: remToPx(8),
     modules: [Navigation, EffectCreative],
     //   effect: "creative",
     //   creativeEffect: {
@@ -45,13 +59,29 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     on: {
       init: function (swiper) {
-        pagCurSwiper1.textContent = swiper.activeIndex + 2;
-        pagLastSwiper1.textContent = swiper.slides.length;
+        if (screenWidth < 769) {
+          pagCurSwiper1.textContent = swiper.activeIndex + 1;
+          pagLastSwiper1.textContent = swiper.slides.length;
+        } else {
+          pagCurSwiper1.textContent = swiper.activeIndex + 2;
+          pagLastSwiper1.textContent = swiper.slides.length;
+        }
+
         //   swiper.style.transitionTimingFunction =
         //     "cubic-bezier(0.32, 0.58, 0.64, 1.21)";
       },
       slideChange: function (swiper) {
-        pagCurSwiper1.textContent = swiper.activeIndex + 2;
+        if (screenWidth < 769) {
+          pagCurSwiper1.textContent = swiper.activeIndex + 1;
+        } else {
+          pagCurSwiper1.textContent = swiper.activeIndex + 2;
+        }
+      },
+    },
+    breakpoints: {
+      769: {
+        spaceBetween: remToPx(25.2),
+        // spaceBetween: remToPx(27.1),
       },
     },
   });
@@ -83,6 +113,28 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
   });
+  function swiperCard() {
+    if (screenWidth <= 768) {
+      if (!init) {
+        init = true;
+        processList = new Swiper(".process__list", {
+          slidesPerView: 1,
+          centeredSlides: true,
+          spaceBetween: remToPx(10),
+          speed: 1000,
+          navigation: {
+            prevEl: navigationProc.querySelector(".navigation-prev"),
+            nextEl: navigationProc.querySelector(".navigation-next"),
+          },
+        });
+      }
+    } else if (init) {
+      processList.destroy();
+      init = false;
+    }
+  }
+  swiperCard();
+
   const swiperProcess = new Swiper(processSliderMain, {
     modules: [Navigation, EffectCreative],
     slidesPerView: 1,
@@ -98,33 +150,53 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0,
       },
     },
+    thumbs: {
+      swiper: processList,
+    },
     on: {
       init: function (swiper) {
-        processItems.forEach((item, id) => {
-          if (id === swiper.activeIndex) {
-            item.classList.add("active");
-            const description = item.querySelector(
-              ".process__list-description"
-            );
-            const height = description.scrollHeight;
-            console.log(height);
-            description.style.height = `${height}px`;
-          } else {
-            item.classList.remove("active");
-          }
-        });
+        if (screenWidth > 769) {
+          processItems.forEach((item, id) => {
+            if (id === swiper.activeIndex) {
+              item.classList.add("active");
+              const description = item.querySelector(
+                ".process__list-description"
+              );
+              const height = description.scrollHeight;
+              console.log(height);
+              description.style.height = `${height}px`;
+            } else {
+              item.classList.remove("active");
+            }
+          });
+        } else {
+          processList.slides[swiper.activeIndex].classList.add("active");
+          processPagCur.textContent = swiper.activeIndex + 1;
+          processPagLast.textContent = swiper.slides.length;
+        }
       },
       slideChange: function (swiper) {
         processItems.forEach((item, id) => {
-          const description = item.querySelector(".process__list-description");
-          if (id === swiper.activeIndex) {
-            item.classList.add("active");
-            const height = description.scrollHeight;
-            console.log(height);
-            description.style.height = `${height}px`;
+          if (screenWidth > 769) {
+            const description = item.querySelector(
+              ".process__list-description"
+            );
+            if (id === swiper.activeIndex) {
+              item.classList.add("active");
+              const height = description.scrollHeight;
+              description.style.height = `${height}px`;
+            } else {
+              item.classList.remove("active");
+              description.style.height = 0;
+            }
           } else {
-            item.classList.remove("active");
-            description.style.height = 0;
+            processList.slideTo(swiper.activeIndex);
+            console.log(processList);
+            processList.slides.forEach((item) => {
+              item.classList.remove("active");
+            });
+            processList.slides[swiper.activeIndex].classList.add("active");
+            processPagCur.textContent = swiper.activeIndex + 1;
           }
         });
       },
@@ -151,6 +223,15 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       next: {
         translate: ["100%", 0, 0],
+      },
+    },
+    on: {
+      init: function (swiper) {
+        bannerCur.textContent = swiper.activeIndex + 1;
+        bannerLast.textContent = swiper.slides.length;
+      },
+      slideChange: function (swiper) {
+        bannerCur.textContent = swiper.activeIndex + 1;
       },
     },
   });
@@ -220,6 +301,12 @@ document.addEventListener("DOMContentLoaded", () => {
     direction: "vertical",
     slidesPerView: 1,
     speed: 1000,
+    spaceBetween: remToPx(34),
+    breakpoints: {
+      769: {
+        spaceBetween: 0,
+      },
+    },
   });
   const advantagesLeft = new Swiper(".advantages__left-slider", {
     // direction: "vertical",
@@ -234,4 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
+
+  window.addEventListener("load", swiperCard);
 });
