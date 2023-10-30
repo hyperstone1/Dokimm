@@ -92,11 +92,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let swiper = new Swiper(item, {
       slidesPerView: 1,
       modules: [Navigation, Pagination, EffectCreative, Thumbs],
-      speed: 1000,
+      speed: 1500,
       slidesPerView: "auto",
       // effect: "slide",
       effect: screenWidth < 769 ? "slide" : "creative",
-      spaceBetween: 20,
+      // spaceBetween: 20,
       centeredSlides: false,
       navigation: {
         prevEl: navigationProc.querySelector(".navigation-prev"),
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
       creativeEffect: {
         prev: {
           shadow: true,
-          translate: ["-20%", 0, -1],
+          translate: ["-40%", 0, -1],
         },
         next: {
           translate: ["100%", 0, 0],
@@ -308,6 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
+
   const advantagesLeft = new Swiper(".advantages__left-slider", {
     // direction: "vertical",
     slidesPerView: 1,
