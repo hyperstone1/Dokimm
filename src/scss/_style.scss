@@ -1,3 +1,12 @@
+@keyframes animTextFill {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 .inner {
   position: absolute;
   top: 0;
@@ -99,28 +108,7 @@
       text-transform: uppercase;
     }
   }
-  @keyframes stroke-rainbow {
-    0% {
-      border-color: var(--main-front-color);
-      -webkit-text-stroke-color: var(--main-front-color);
-    }
-    25% {
-      border-color: var(--second-front-color);
-      -webkit-text-stroke-color: var(--second-front-color);
-    }
-    50% {
-      border-color: var(--third-front-color);
-      -webkit-text-stroke-color: var(--third-front-color);
-    }
-    75% {
-      border-color: var(--second-front-color);
-      -webkit-text-stroke-color: var(--second-front-color);
-    }
-    100% {
-      border-color: var(--main-front-color);
-      -webkit-text-stroke-color: var(--main-front-color);
-    }
-  }
+
   &__content {
     position: relative;
     color: #fff;
@@ -131,24 +119,32 @@
     line-height: 1;
     text-transform: uppercase;
     &-text {
-      background-clip: text;
-      color: transparent;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      /**/
-      /*The animated layer*/
-      background-image: linear-gradient(#000, #000);
-      background-size: 100% 100%;
-      background-position: right;
-      background-repeat: no-repeat;
-      /**/
-      transition: 1s all;
-      font-weight: bold;
-      text-align: center;
-      font-size: 90px;
-      -webkit-text-stroke: 2px var(--main-front-color);
-      animation: stroke-rainbow 13s linear infinite,
-        text-rainbow 13s linear infinite;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translate(-50%, -50%);
+      color: #ffffff85;
+      &--anim {
+        background-image: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0) 50%,
+          rgb(255, 255, 255) 50%
+        );
+        background-size: 200%;
+        background-position: 0 0;
+        display: inline;
+        transition: 1s ease-in-out;
+        text-transform: uppercase;
+        -webkit-background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        z-index: 2;
+        &.anim-fill-text {
+          background-position: -100% 0;
+        }
+      }
     }
     &-text-order {
       display: none;
