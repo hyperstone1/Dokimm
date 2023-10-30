@@ -99,6 +99,28 @@
       text-transform: uppercase;
     }
   }
+  @keyframes stroke-rainbow {
+    0% {
+      border-color: var(--main-front-color);
+      -webkit-text-stroke-color: var(--main-front-color);
+    }
+    25% {
+      border-color: var(--second-front-color);
+      -webkit-text-stroke-color: var(--second-front-color);
+    }
+    50% {
+      border-color: var(--third-front-color);
+      -webkit-text-stroke-color: var(--third-front-color);
+    }
+    75% {
+      border-color: var(--second-front-color);
+      -webkit-text-stroke-color: var(--second-front-color);
+    }
+    100% {
+      border-color: var(--main-front-color);
+      -webkit-text-stroke-color: var(--main-front-color);
+    }
+  }
   &__content {
     position: relative;
     color: #fff;
@@ -108,6 +130,26 @@
     font-weight: 400;
     line-height: 1;
     text-transform: uppercase;
+    &-text {
+      background-clip: text;
+      color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /**/
+      /*The animated layer*/
+      background-image: linear-gradient(#000, #000);
+      background-size: 100% 100%;
+      background-position: right;
+      background-repeat: no-repeat;
+      /**/
+      transition: 1s all;
+      font-weight: bold;
+      text-align: center;
+      font-size: 90px;
+      -webkit-text-stroke: 2px var(--main-front-color);
+      animation: stroke-rainbow 13s linear infinite,
+        text-rainbow 13s linear infinite;
+    }
     &-text-order {
       display: none;
     }

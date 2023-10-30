@@ -46,6 +46,66 @@
     transform: translateY(0);
   }
 }
+@keyframes animTextForm {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes animRingForm {
+  0% {
+    transform: translateY(-170%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes animInputsForm {
+  0% {
+    transform: translateY(170%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes animBtnForm {
+  0% {
+    transform: translateX(170%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-10%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.anim-btn-form {
+  animation: animBtnForm 1s ease-in-out;
+}
+.anim-form {
+  animation: animInputsForm 1s ease-in-out;
+}
+.anim-ring {
+  animation: animRingForm 1s ease-in-out;
+}
+.anim-form-text {
+  animation: animTextForm 1s ease-in-out;
+}
 .anim-text {
   animation: animText 1s ease-in-out;
 }
