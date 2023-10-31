@@ -325,7 +325,21 @@ document.addEventListener("DOMContentLoaded", () => {
     // },
   });
 
+  var isAnimating = false;
+
+  advantagesRight.on("slideChangeTransitionStart", function () {
+    isAnimating = true;
+  });
+
+  advantagesRight.on("slideChangeTransitionEnd", function () {
+    isAnimating = false;
+  });
+
   advantages.addEventListener("wheel", function (event) {
+    if (isAnimating) {
+      event.preventDefault(); // Блокируем скролл во время анимации переключения слайда
+      return;
+    }
     var deltaY = event.deltaY;
     var isScrollingDown = deltaY > 0;
     var isAtBeginning =
