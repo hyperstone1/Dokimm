@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const advantagesRight = new Swiper(".advantages__right-slider", {
     direction: "vertical",
     slidesPerView: 1,
-    speed: 3500,
+    speed: 3000,
     spaceBetween: remToPx(34),
     breakpoints: {
       769: {
