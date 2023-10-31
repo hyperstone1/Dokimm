@@ -725,7 +725,8 @@
   }
   &__right {
     &-wrapper {
-      // transition-timing-function: cubic-bezier(0.75, 1.01, 0.95, 0.95);
+      // transition-timing-function: cubic-bezier(0.22, 1.05, 0.79, 0.05);
+      transition-timing-function: cubic-bezier(0.04, 1.2, 0.97, 0.24);
     }
     &-slider {
       overflow: hidden;

@@ -297,10 +297,12 @@ document.addEventListener("DOMContentLoaded", () => {
     swiperBanner3.slideNext();
     swiperBanner4.slideNext();
   });
+
+  const advantages = document.querySelector(".advantages");
   const advantagesRight = new Swiper(".advantages__right-slider", {
     direction: "vertical",
     slidesPerView: 1,
-    speed: 1000,
+    speed: 3500,
     spaceBetween: remToPx(34),
     breakpoints: {
       769: {
@@ -312,15 +314,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const advantagesLeft = new Swiper(".advantages__left-slider", {
     // direction: "vertical",
     slidesPerView: 1,
-    speed: 1000,
-    on: {
-      slideNextTransitionStart: function (swiper) {
+    speed: 1500,
+    // on: {
+    //   slideNextTransitionStart: function (swiper) {
+    //     advantagesRight.slideNext();
+    //   },
+    //   slidePrevTransitionStart: function (swiper) {
+    //     advantagesRight.slidePrev();
+    //   },
+    // },
+  });
+
+  advantages.addEventListener("wheel", function (event) {
+    var deltaY = event.deltaY;
+    var isScrollingDown = deltaY > 0;
+    var isAtBeginning =
+      advantagesRight.isBeginning && advantagesLeft.isBeginning;
+    var isAtEnd = advantagesRight.isEnd && advantagesLeft.isEnd;
+
+    if ((isScrollingDown && !isAtEnd) || (!isScrollingDown && !isAtBeginning)) {
+      // Разрешаем скролл только если не достигнут начало или конец слайдера
+      event.preventDefault();
+
+      if (isScrollingDown) {
+        // Прокрутка вниз - перейти к следующему слайду
         advantagesRight.slideNext();
-      },
-      slidePrevTransitionStart: function (swiper) {
+        advantagesLeft.slideNext();
+      } else {
+        // Прокрутка вверх - перейти к предыдущему слайду
         advantagesRight.slidePrev();
-      },
-    },
+        advantagesLeft.slidePrev();
+      }
+    }
   });
 
   window.addEventListener("load", swiperCard);
