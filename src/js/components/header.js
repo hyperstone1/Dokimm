@@ -25,6 +25,7 @@ headerSearch.forEach((btn) => {
       e.target.closest(".search-btn")
     ) {
       searchResult.classList.remove("no-anim");
+      header.classList.add("active");
       searchResult.classList.add("visible");
       headerMenu.forEach((menu) => {
         menu.classList.remove("visible");
