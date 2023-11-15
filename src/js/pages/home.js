@@ -10,6 +10,7 @@ import {
   Mousewheel,
 } from "swiper/modules";
 import remToPx from "../utils/rem";
+import { screenWidth } from "../utils/contants";
 
 document.addEventListener("DOMContentLoaded", () => {
   const pagCurSwiper1 = document.querySelector(
@@ -19,20 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
     ".category__top-pagination .pagination-last"
   );
   const bannerPag = document.querySelector(".banner__main-pagination");
-  const bannerCur = bannerPag.querySelector(".pagination-current");
-  const bannerLast = bannerPag.querySelector(".pagination-last");
+  const bannerCur = bannerPag && bannerPag.querySelector(".pagination-current");
+  const bannerLast = bannerPag && bannerPag.querySelector(".pagination-last");
   const navigationCat = document.querySelector(".category__top-navigation");
   const navigationProc = document.querySelector(".process__navigation");
   const bannerControls = document.querySelector(".banner__main-controls");
-  const bannerPrev = bannerControls.querySelector(".navigation-prev");
-  const bannerNext = bannerControls.querySelector(".navigation-next");
+  const bannerPrev =
+    bannerControls && bannerControls.querySelector(".navigation-prev");
+  const bannerNext =
+    bannerControls && bannerControls.querySelector(".navigation-next");
   const processItems = document.querySelectorAll(".process__list-item");
   const process = document.querySelector(".process");
-  const processPrev = process.querySelector(".navigation-prev");
-  const processNext = process.querySelector(".navigation-next");
-  const processPagCur = process.querySelector(".pagination-current");
-  const processPagLast = process.querySelector(".pagination-last");
-  const screenWidth = window.screen.width;
+  const processPrev = process && process.querySelector(".navigation-prev");
+  const processNext = process && process.querySelector(".navigation-next");
+  const processPagCur = process && process.querySelector(".pagination-current");
+  const processPagLast = process && process.querySelector(".pagination-last");
+
   var init = false;
   var processList;
 
@@ -54,8 +57,12 @@ document.addEventListener("DOMContentLoaded", () => {
     //   effect: 'creative',
     speed: 1500,
     navigation: {
-      prevEl: navigationCat.querySelector(".navigation-prev"),
-      nextEl: navigationCat.querySelector(".navigation-next"),
+      prevEl: navigationCat
+        ? navigationCat.querySelector(".navigation-prev")
+        : null,
+      nextEl: navigationCat
+        ? navigationCat.querySelector(".navigation-next")
+        : null,
     },
     on: {
       init: function (swiper) {
@@ -99,8 +106,12 @@ document.addEventListener("DOMContentLoaded", () => {
       // spaceBetween: 20,
       centeredSlides: false,
       navigation: {
-        prevEl: navigationProc.querySelector(".navigation-prev"),
-        nextEl: navigationProc.querySelector(".navigation-next"),
+        prevEl: navigationProc
+          ? navigationProc.querySelector(".navigation-prev")
+          : null,
+        nextEl: navigationProc
+          ? navigationProc.querySelector(".navigation-next")
+          : null,
       },
       creativeEffect: {
         prev: {
@@ -123,8 +134,12 @@ document.addEventListener("DOMContentLoaded", () => {
           spaceBetween: remToPx(10),
           speed: 1000,
           navigation: {
-            prevEl: navigationProc.querySelector(".navigation-prev"),
-            nextEl: navigationProc.querySelector(".navigation-next"),
+            prevEl: navigationProc
+              ? navigationProc.querySelector(".navigation-prev")
+              : null,
+            nextEl: navigationProc
+              ? navigationProc.querySelector(".navigation-next")
+              : null,
           },
         });
       }
@@ -202,8 +217,12 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
     navigation: {
-      prevEl: navigationProc.querySelector(".navigation-prev"),
-      nextEl: navigationProc.querySelector(".navigation-next"),
+      prevEl: navigationProc
+        ? navigationProc.querySelector(".navigation-prev")
+        : null,
+      nextEl: navigationProc
+        ? navigationProc.querySelector(".navigation-next")
+        : null,
     },
   });
 
@@ -285,82 +304,89 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     },
   });
-  bannerPrev.addEventListener("click", () => {
-    swiperBanner1.slidePrev();
-    swiperBanner2.slidePrev();
-    swiperBanner3.slidePrev();
-    swiperBanner4.slidePrev();
-  });
-  bannerNext.addEventListener("click", () => {
-    swiperBanner1.slideNext();
-    swiperBanner2.slideNext();
-    swiperBanner3.slideNext();
-    swiperBanner4.slideNext();
-  });
+  if (bannerPrev && bannerNext) {
+    bannerPrev.addEventListener("click", () => {
+      swiperBanner1.slidePrev();
+      swiperBanner2.slidePrev();
+      swiperBanner3.slidePrev();
+      swiperBanner4.slidePrev();
+    });
+    bannerNext.addEventListener("click", () => {
+      swiperBanner1.slideNext();
+      swiperBanner2.slideNext();
+      swiperBanner3.slideNext();
+      swiperBanner4.slideNext();
+    });
+  }
 
   const advantages = document.querySelector(".advantages");
-  const advantagesRight = new Swiper(".advantages__right-slider", {
-    direction: "vertical",
-    slidesPerView: 1,
-    speed: 3000,
-    spaceBetween: remToPx(34),
-    breakpoints: {
-      769: {
-        spaceBetween: 0,
+  if (advantages) {
+    const advantagesRight = new Swiper(".advantages__right-slider", {
+      direction: "vertical",
+      slidesPerView: 1,
+      speed: 3000,
+      spaceBetween: remToPx(34),
+      breakpoints: {
+        769: {
+          spaceBetween: 0,
+        },
       },
-    },
-  });
+    });
 
-  const advantagesLeft = new Swiper(".advantages__left-slider", {
-    // direction: "vertical",
-    slidesPerView: 1,
-    speed: 1500,
-    // on: {
-    //   slideNextTransitionStart: function (swiper) {
-    //     advantagesRight.slideNext();
-    //   },
-    //   slidePrevTransitionStart: function (swiper) {
-    //     advantagesRight.slidePrev();
-    //   },
-    // },
-  });
+    const advantagesLeft = new Swiper(".advantages__left-slider", {
+      // direction: "vertical",
+      slidesPerView: 1,
+      speed: 1500,
+      // on: {
+      //   slideNextTransitionStart: function (swiper) {
+      //     advantagesRight.slideNext();
+      //   },
+      //   slidePrevTransitionStart: function (swiper) {
+      //     advantagesRight.slidePrev();
+      //   },
+      // },
+    });
 
-  var isAnimating = false;
+    var isAnimating = false;
 
-  advantagesRight.on("slideChangeTransitionStart", function () {
-    isAnimating = true;
-  });
+    advantagesRight.on("slideChangeTransitionStart", function () {
+      isAnimating = true;
+    });
 
-  advantagesRight.on("slideChangeTransitionEnd", function () {
-    isAnimating = false;
-  });
+    advantagesRight.on("slideChangeTransitionEnd", function () {
+      isAnimating = false;
+    });
 
-  advantages.addEventListener("wheel", function (event) {
-    if (isAnimating) {
-      event.preventDefault(); // Блокируем скролл во время анимации переключения слайда
-      return;
-    }
-    var deltaY = event.deltaY;
-    var isScrollingDown = deltaY > 0;
-    var isAtBeginning =
-      advantagesRight.isBeginning && advantagesLeft.isBeginning;
-    var isAtEnd = advantagesRight.isEnd && advantagesLeft.isEnd;
-
-    if ((isScrollingDown && !isAtEnd) || (!isScrollingDown && !isAtBeginning)) {
-      // Разрешаем скролл только если не достигнут начало или конец слайдера
-      event.preventDefault();
-
-      if (isScrollingDown) {
-        // Прокрутка вниз - перейти к следующему слайду
-        advantagesRight.slideNext();
-        advantagesLeft.slideNext();
-      } else {
-        // Прокрутка вверх - перейти к предыдущему слайду
-        advantagesRight.slidePrev();
-        advantagesLeft.slidePrev();
+    advantages.addEventListener("wheel", function (event) {
+      if (isAnimating) {
+        event.preventDefault();
+        return;
       }
-    }
-  });
+      var deltaY = event.deltaY;
+      var isScrollingDown = deltaY > 0;
+      var isAtBeginning =
+        advantagesRight.isBeginning && advantagesLeft.isBeginning;
+      var isAtEnd = advantagesRight.isEnd && advantagesLeft.isEnd;
+
+      if (
+        (isScrollingDown && !isAtEnd) ||
+        (!isScrollingDown && !isAtBeginning)
+      ) {
+        // Разрешаем скролл только если не достигнут начало или конец слайдера
+        event.preventDefault();
+
+        if (isScrollingDown) {
+          // Прокрутка вниз - перейти к следующему слайду
+          advantagesRight.slideNext();
+          advantagesLeft.slideNext();
+        } else {
+          // Прокрутка вверх - перейти к предыдущему слайду
+          advantagesRight.slidePrev();
+          advantagesLeft.slidePrev();
+        }
+      }
+    });
+  }
 
   window.addEventListener("load", swiperCard);
 });

@@ -1,0 +1,131 @@
+.map {
+  position: relative;
+  margin-bottom: 16.1rem;
+  &_container {
+    display: flex;
+    gap: 6rem;
+  }
+  &__list {
+    padding: 3rem;
+    position: absolute;
+    left: 14rem;
+    top: 8rem;
+    background: url("./assets/images/back_contacts.png");
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 36.5rem;
+    height: 43rem;
+    z-index: 2;
+    &-title {
+      color: #fff;
+      font-family: "Cormorant";
+      font-size: 4rem;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.28rem;
+      text-transform: uppercase;
+    }
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 2.4rem;
+      font-size: 2rem;
+      font-weight: 300;
+      line-height: 1; /* 30px */
+    }
+    &-address {
+      color: #909091;
+      cursor: pointer;
+      &.active {
+        color: #fff;
+      }
+    }
+  }
+  &__text {
+    align-self: center;
+    width: 57.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    &-subtitle {
+      width: 14.3rem;
+      color: #909091;
+      font-size: 1.4rem;
+      font-weight: 400;
+      line-height: 1.78;
+      letter-spacing: 0.35rem;
+      text-transform: uppercase;
+    }
+    &-address {
+      color: #fff;
+      font-family: "Cormorant";
+      font-size: 5.8rem;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.406rem;
+      text-transform: uppercase;
+    }
+  }
+}
+#map {
+  margin-left: auto;
+  width: 79rem;
+  height: 60rem;
+}
+.ymaps-2-1-79-map-copyrights-promo,
+.ymaps-2-1-79-copyright__content {
+  display: none !important;
+}
+.ymaps-2-1-79-ground-pane {
+  filter: grayscale(1);
+}
+.ymaps-2-1-79-image {
+  width: 12.9rem !important;
+  height: 5.7rem !important;
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 48em) {
+  .map {
+    margin-bottom: 0;
+    &_container {
+      flex-direction: column;
+    }
+    &__list {
+      width: 100%;
+      padding: 3.2rem;
+      position: relative;
+      top: 0;
+      left: 0;
+      &-title {
+        width: 34rem;
+        font-size: 5.2rem;
+        line-height: 1.23;
+      }
+      &-content {
+        font-size: 2.8rem;
+      }
+    }
+    &__text {
+      width: 100%;
+      gap: 4.8rem;
+      &-subtitle {
+        width: 100%;
+        font-size: 2.6rem;
+      }
+      &-address {
+        // display: flex;
+        // gap: 1rem;
+        font-size: 5.2rem;
+        letter-spacing: 0.364rem;
+      }
+    }
+  }
+  #map {
+    width: 100%;
+    height: 80rem;
+  }
+}

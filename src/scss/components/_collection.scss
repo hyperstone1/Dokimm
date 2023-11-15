@@ -1,0 +1,66 @@
+.collection {
+  margin-bottom: 25rem;
+  &__title {
+    margin-bottom: 9rem;
+  }
+  &__content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__left {
+    width: 36.5rem;
+    height: 57.6rem;
+    overflow: hidden;
+    &-item {
+      width: 100%;
+      height: 100%;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &__main {
+    width: 36.5rem;
+    height: 36.5rem;
+    overflow: hidden;
+    background: url("./assets/images/no_photo.png");
+    background-size: 100% 100%;
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 15.5rem;
+        height: 14.8rem;
+      }
+    }
+  }
+  &__right {
+    width: 79rem;
+    height: 57.6rem;
+    overflow: hidden;
+    &-item {
+      width: 100%;
+      height: 100%;
+      img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+  &__navigation {
+    position: absolute;
+    bottom: 0;
+    left: 59.6rem;
+    // .navigation-next, .navigation-prev{
+    //     width: 6rem;
+    // }
+  }
+}

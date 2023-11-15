@@ -13,6 +13,10 @@ const devtool = devMode ? "source-map" : undefined;
 
 const entryPoints = {
   index: path.resolve(__dirname, "src", "index.js"),
+  catalog: path.resolve(__dirname, "src", "index.js"),
+  podcategory: path.resolve(__dirname, "src", "index.js"),
+  collection: path.resolve(__dirname, "src", "index.js"),
+  contacts: path.resolve(__dirname, "src", "index.js"),
   // Добавьте другие страницы здесь
 };
 
@@ -148,6 +152,18 @@ module.exports = {
         generator: {
           filename: "assets/images/[name][ext]",
         },
+      },
+      //video
+      {
+        test: /\.(mov|mp4)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+            },
+          },
+        ],
       },
       // css,scss
       {

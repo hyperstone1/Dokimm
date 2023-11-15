@@ -101,7 +101,7 @@
     }
     &__menu {
       flex-direction: column;
-      gap: 5.6rem;
+      gap: 4rem;
       &-link {
         justify-content: center;
         font-size: 2.6rem;
@@ -119,7 +119,7 @@
       transform: translate(0, 0);
     }
     &__right {
-      margin-top: 5.6rem;
+      margin-top: 4rem;
       order: 3;
       flex-direction: column;
     }
