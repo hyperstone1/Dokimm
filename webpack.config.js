@@ -13,6 +13,7 @@ const devtool = devMode ? "source-map" : undefined;
 
 const entryPoints = {
   index: path.resolve(__dirname, "src", "index.js"),
+  home: path.resolve(__dirname, "src", "index.js"),
   catalog: path.resolve(__dirname, "src", "index.js"),
   podcategory: path.resolve(__dirname, "src", "index.js"),
   collection: path.resolve(__dirname, "src", "index.js"),
