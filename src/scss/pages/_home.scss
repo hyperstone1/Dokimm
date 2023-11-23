@@ -265,11 +265,14 @@
       position: relative;
       flex: 1;
       padding-top: 23.1rem;
+      padding-bottom: 6.4rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       // width: 96rem;
       height: 105.8rem;
+      background: url("./assets/images/catalog/catalog_back_desk.webp");
+      background-size: 100% 100%;
       &.collection {
         padding-top: 18.6rem;
         .banner__content {

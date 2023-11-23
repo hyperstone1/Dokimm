@@ -34,12 +34,13 @@
     }
     &-year,
     &-rd-subtitle,
-    &-agreement {
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 1.4rem;
+    &-agreement,
+    &-rd-title {
+      color: #909091;
+      font-size: 1.5rem;
       font-weight: 400;
-      line-height: 1.78;
-      letter-spacing: 3.5px;
+      line-height: 1.5;
+      letter-spacing: 0.15rem;
     }
     &-year {
       position: absolute;
@@ -139,15 +140,19 @@
       &-rd-subtitle,
       &-agreement,
       &-year {
+        color: rgba(255, 255, 255, 0.4);
         font-size: 2.8rem;
-        line-height: 1;
-        letter-spacing: 0.28rem;
+        font-weight: 300;
+        line-height: 1.42;
+        letter-spacing: 0.14rem;
       }
       &-rd {
         order: 1;
         &-title {
           font-size: 3rem;
           letter-spacing: 0.28rem;
+          // color: #909091;
+          color: #a8a6a6;
         }
       }
       &-year {
