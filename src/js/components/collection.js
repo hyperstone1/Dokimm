@@ -13,6 +13,15 @@ import remToPx from "../utils/rem";
 import { screenWidth } from "../utils/contants";
 
 const collestions = document.querySelectorAll("section.collection");
+const controls = document.querySelector(".col_desc__controls");
+const collPrev = controls && controls.querySelector(".navigation-prev");
+const collNext = controls && controls.querySelector(".navigation-next");
+const collPagCur = document.querySelector(
+  ".col_desc__controls-pagination .pagination-current"
+);
+const collPagLast = document.querySelector(
+  ".col_desc__controls-pagination .pagination-last"
+);
 
 collestions.forEach((item) => {
   const collectionLeft = item.querySelector(".collection__left");
@@ -30,6 +39,7 @@ collestions.forEach((item) => {
     effect: screenWidth < 769 ? "slide" : "creative",
     // spaceBetween: 20,
     centeredSlides: false,
+    allowTouchMove: false,
     creativeEffect: {
       prev: {
         shadow: true,
@@ -45,6 +55,7 @@ collestions.forEach((item) => {
     slidesPerView: 1,
     effect: "creative",
     speed: 1000,
+    allowTouchMove: false,
     creativeEffect: {
       prev: {
         scale: 0,
@@ -69,6 +80,7 @@ collestions.forEach((item) => {
     effect: screenWidth < 769 ? "slide" : "fade",
     // spaceBetween: 20,
     centeredSlides: false,
+    allowTouchMove: false,
   });
   console.log(colPrev);
   colPrev.addEventListener("click", () => {
@@ -82,3 +94,59 @@ collestions.forEach((item) => {
     rightSlider.slideNext();
   });
 });
+
+const imgs = document.querySelectorAll(".col_desc__main-img");
+
+const collectionText = new Swiper(".col_desc__slider", {
+  modules: [Pagination],
+  slidesPerView: 1,
+  spaceBetween: 20,
+  // pagination: {
+  //   el: controls.querySelector(".pagination"),
+  // },
+  allowTouchMove: false,
+  on: {
+    init: function (swiper) {
+      collPagCur.textContent = swiper.activeIndex + 1;
+      collPagLast.textContent = swiper.slides.length;
+      updateImageClasses(swiper.activeIndex);
+    },
+    slideChange: function (swiper) {
+      collPagCur.textContent = swiper.activeIndex + 1;
+      updateImageClasses(swiper.activeIndex);
+    },
+  },
+});
+
+collPrev &&
+  collPrev.addEventListener("click", () => {
+    collectionText.slidePrev();
+  });
+
+collNext &&
+  collNext.addEventListener("click", () => {
+    collectionText.slideNext();
+  });
+
+function updateImageClasses(activeIndex) {
+  // Удаляем все классы first, second, third, four, five, six у всех изображений
+  imgs.forEach((img) => {
+    img.classList.remove("first", "second", "third", "four", "five", "six");
+  });
+
+  // Определяем классы для текущего, предыдущего, следующего и следующего после следующего изображений
+  const currentIndex = activeIndex % imgs.length; // Учитываем циклическую навигацию
+  const prevIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+  const nextIndex = (currentIndex + 1) % imgs.length;
+  const nextNextIndex = (currentIndex + 2) % imgs.length;
+  const nextNextNextIndex = (currentIndex + 3) % imgs.length;
+  const nextNextNextNextIndex = (currentIndex + 4) % imgs.length;
+
+  // Добавляем соответствующие классы текущему, предыдущему, следующему и следующему после следующего изображениям
+  imgs[currentIndex].classList.add("second");
+  imgs[prevIndex].classList.add("first");
+  imgs[nextIndex].classList.add("third");
+  imgs[nextNextIndex].classList.add("four");
+  imgs[nextNextNextIndex].classList.add("five");
+  imgs[nextNextNextNextIndex].classList.add("six");
+}
