@@ -10,9 +10,22 @@ const searchResult = document.querySelector(".header__bottom-search");
 const links = document.querySelectorAll(".link");
 const headerBack = document.querySelector(".header__popular-back");
 
+const closeMenu = document.querySelector(".header__search-close");
+
 headerBack.addEventListener("click", () => {
   searchResult.classList.remove("visible");
   document.body.classList.remove("hidden");
+});
+
+closeMenu.addEventListener("click", () => {
+  header.classList.remove("active");
+  searchResult.classList.remove("visible");
+  headerSearch.forEach((btn) => {
+    btn.classList.remove("active");
+  });
+  links.forEach((link) => {
+    link.classList.remove("invisible");
+  });
 });
 
 // headerSearch.addEventListener("mouseover", () => {
@@ -21,9 +34,16 @@ headerBack.addEventListener("click", () => {
 headerSearch.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     if (
-      e.target.classList.contains("search-btn") ||
-      e.target.closest(".search-btn")
+      (e.target.classList.contains("search-btn") ||
+        e.target.closest(".search-btn")) &&
+      !e.target.classList.contains("header__search-close") &&
+      !e.target.closest(".header__search-close")
     ) {
+      console.log(
+        "tut ok",
+        e.target,
+        e.target.closest(".header__search-close")
+      );
       searchResult.classList.remove("no-anim");
       header.classList.add("active");
       searchResult.classList.add("visible");

@@ -85,22 +85,36 @@
     position: relative;
     margin-bottom: 6rem;
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
     font-size: 1.8rem;
     font-weight: 400;
     letter-spacing: 0.45rem;
     text-transform: uppercase;
     &-reset {
-      width: fit-content;
-      display: none;
-      padding-bottom: 1.4rem;
+      padding-bottom: 0.4rem;
       color: #fff;
-      font-size: 2.8rem;
+      font-size: 1.5rem;
       font-weight: 400;
-      line-height: normal;
-      letter-spacing: 0.65rem;
+      line-height: 1.66;
+      letter-spacing: 0.375rem;
       text-transform: uppercase;
       border-bottom: 1px solid #fff;
+      &.invisible {
+        display: none;
+      }
+      &.mob {
+        display: none;
+      }
+    }
+    &-count {
+      &.invisible {
+        display: none;
+      }
+    }
+    &-text {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
     &-range {
       position: relative;
@@ -161,6 +175,7 @@
       justify-content: space-between;
       background: url("./assets/images/header_back_mob.png");
       background-size: 100% 100%;
+      z-index: 2;
       &.visible {
         display: flex;
       }
@@ -523,6 +538,8 @@
         }
       }
       .banner__btn {
+        top: auto;
+        right: 8.8rem;
         bottom: 21.4rem;
       }
       .btn-text {
@@ -759,10 +776,23 @@
     &__filter {
       &-range {
         width: 41rem;
+        margin-left: 2rem;
       }
       &-reset {
-        display: block;
-        margin-top: 8rem;
+        display: none;
+        &.mob {
+          margin-top: 8rem;
+          display: block;
+          width: fit-content;
+          padding-bottom: 1.4rem;
+          color: #fff;
+          font-size: 2.8rem;
+          font-weight: 400;
+          line-height: normal;
+          letter-spacing: 0.65rem;
+          text-transform: uppercase;
+          border-bottom: 1px solid #fff;
+        }
       }
       &-menu {
         display: flex;

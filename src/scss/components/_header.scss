@@ -146,6 +146,18 @@
         height: 4rem;
       }
     }
+    &-close {
+      position: absolute;
+      top: 0;
+      right: -4rem;
+      width: 2.4rem;
+      height: 2.4rem;
+      display: none;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
     &-list {
       display: flex;
       flex-direction: column;
@@ -308,6 +320,10 @@
       display: block;
       input {
       }
+    }
+    .header__search-close {
+      display: block;
+      z-index: 12;
     }
   }
 }

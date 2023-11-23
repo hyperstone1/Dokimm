@@ -10,13 +10,61 @@ import {
   Mousewheel,
 } from "swiper/modules";
 import remToPx from "../utils/rem";
+import { screenWidth } from "../utils/contants";
 
 const filterBtn = document.querySelector(".catalog__filter-btn");
 const filterMenu = document.querySelector(".catalog__filter-menu");
 const catalogPag = document.querySelectorAll(".catalog__pagination-number");
 const catalogNext = document.querySelector(".catalog__controls-next");
 const catalogPrev = document.querySelector(".catalog__controls-prev");
+const filterCount = document.querySelector(".catalog__filter-count");
+const filterResets = document.querySelectorAll(".catalog__filter-reset");
+const filtersItems = document.querySelectorAll('input[type="checkbox"]');
+
+filterMenu.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 let i = 0;
+
+// let count = 0;
+
+filterResets.forEach((item) => {
+  item.addEventListener("click", () => {
+    filtersItems.forEach((item) => {
+      item.checked = false;
+    });
+    filterCount.classList.add("invisible");
+    item.classList.add("invisible");
+    filterMenu.classList.remove("visible");
+  });
+});
+
+filtersItems.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    let count = 0;
+    filtersItems.forEach((elem) => {
+      console.log(elem.checked);
+      if (elem.checked) {
+        count++;
+      }
+    });
+    if (count === 0) {
+      filterCount.classList.add("invisible");
+      filterResets[0].classList.add("invisible");
+      filterResets[1].classList.add("invisible");
+    } else {
+      if (screenWidth < 769) {
+        filterResets[1].classList.remove("invisible");
+      } else {
+        filterResets[0].classList.remove("invisible");
+      }
+
+      filterCount.classList.remove("invisible");
+      filterCount.textContent = `(${count})`;
+    }
+    console.log(count);
+  });
+});
 
 catalogNext.addEventListener("click", (e) => {
   if (i < catalogPag.length - 2) {
