@@ -88,12 +88,12 @@ if (rangeSlider) {
 
 document.addEventListener("mouseup", (e) => {
   if (window.innerWidth >= 769) {
-    const isClickInsideContainer = filter.contains(e.target);
-    const isClickInsideOutsideElement = filter.contains(e.target);
+    const isClickInsideContainer = filter && filter.contains(e.target);
+    const isClickInsideOutsideElement = filter && filter.contains(e.target);
 
     // Если клик был вне контейнера и вне элемента, который не должен закрывать контейнер, то закрываем контейнер
     if (!isClickInsideContainer && !isClickInsideOutsideElement) {
-      filterMenu.classList.remove("visible");
+      filterMenu && filterMenu.classList.remove("visible");
     }
   }
 });

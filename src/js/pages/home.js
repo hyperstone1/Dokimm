@@ -36,8 +36,28 @@ document.addEventListener("DOMContentLoaded", () => {
   const processPagCur = process && process.querySelector(".pagination-current");
   const processPagLast = process && process.querySelector(".pagination-last");
 
+  const advanMobCont = document.querySelector(".advantages__content-container");
+  const advanStart =
+    advanMobCont && advanMobCont.querySelector(".pagination-current");
+  const advanEnd =
+    advanMobCont && advanMobCont.querySelector(".pagination-last");
+
   var init = false;
   var processList;
+
+  const advanSliderMob = new Swiper(".advantages__content-bottom", {
+    slidesPerView: 1,
+    spaceBetween: 270,
+    speed: 1000,
+    on: {
+      init: function (swiper) {
+        advanEnd.textContent = swiper.slides.length;
+      },
+      slideChange: function (swiper) {
+        advanStart.textContent = swiper.activeIndex + 1;
+      },
+    },
+  });
 
   const swiper1 = new Swiper(".category__list", {
     slidesPerView: "auto",
@@ -93,6 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
+  const arrSliders = [];
+
   const swipersProcess = document.querySelectorAll(".process__slider");
   const processSliderMain = document.querySelector(".process__slider-main");
   swipersProcess.forEach((item) => {
@@ -123,32 +145,8 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       },
     });
+    arrSliders.push(swiper);
   });
-  function swiperCard() {
-    if (screenWidth <= 768) {
-      if (!init) {
-        init = true;
-        processList = new Swiper(".process__list", {
-          slidesPerView: 1,
-          centeredSlides: true,
-          spaceBetween: remToPx(10),
-          speed: 1000,
-          navigation: {
-            prevEl: navigationProc
-              ? navigationProc.querySelector(".navigation-prev")
-              : null,
-            nextEl: navigationProc
-              ? navigationProc.querySelector(".navigation-next")
-              : null,
-          },
-        });
-      }
-    } else if (init) {
-      processList.destroy();
-      init = false;
-    }
-  }
-  swiperCard();
 
   const swiperProcess = new Swiper(processSliderMain, {
     modules: [Navigation, EffectCreative],
@@ -185,9 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           });
         } else {
-          processList.slides[swiper.activeIndex].classList.add("active");
-          processPagCur.textContent = swiper.activeIndex + 1;
-          processPagLast.textContent = swiper.slides.length;
         }
       },
       slideChange: function (swiper) {
@@ -204,14 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
               item.classList.remove("active");
               description.style.height = 0;
             }
-          } else {
-            processList.slideTo(swiper.activeIndex);
-            console.log(processList);
-            processList.slides.forEach((item) => {
-              item.classList.remove("active");
-            });
-            processList.slides[swiper.activeIndex].classList.add("active");
-            processPagCur.textContent = swiper.activeIndex + 1;
           }
         });
       },
@@ -225,6 +212,106 @@ document.addEventListener("DOMContentLoaded", () => {
         : null,
     },
   });
+
+  function swiperCard() {
+    if (screenWidth <= 768) {
+      if (!init) {
+        init = true;
+        processList = new Swiper(".process__list", {
+          slidesPerView: 1,
+          centeredSlides: true,
+          spaceBetween: remToPx(10),
+          speed: 1000,
+          allowTouchMove: false,
+          navigation: {
+            prevEl: navigationProc
+              ? navigationProc.querySelector(".navigation-prev")
+              : null,
+            nextEl: navigationProc
+              ? navigationProc.querySelector(".navigation-next")
+              : null,
+          },
+          on: {
+            init: function (swiper) {
+              processPagCur.textContent = swiper.activeIndex + 1;
+              processPagLast.textContent = swiper.slides.length;
+            },
+            slideChange: function (swiper) {
+              processPagCur.textContent = swiper.activeIndex + 1;
+            },
+          },
+        });
+      }
+    } else if (init) {
+      processList.destroy();
+      init = false;
+    }
+  }
+  swiperCard();
+
+  if (screenWidth < 769) {
+    const processMob = new Swiper(".process__slider-mob", {
+      slidesPerView: 1,
+      modules: [Navigation, EffectFade, EffectCreative],
+      effect: "creative",
+      speed: 700,
+      allowTouchMove: false,
+      creativeEffect: {
+        prev: {
+          scale: 0,
+          translate: ["40%", 0, 0],
+          opacity: 0,
+        },
+        next: {
+          scale: 0,
+          translate: ["-40%", 0, 0],
+          opacity: 0,
+        },
+      },
+      // navigation: {
+      //   prevEl: navigationProc
+      //     ? navigationProc.querySelector(".navigation-prev")
+      //     : null,
+      //   nextEl: navigationProc
+      //     ? navigationProc.querySelector(".navigation-next")
+      //     : null,
+      // },
+    });
+
+    const prevProc =
+      navigationProc && navigationProc.querySelector(".navigation-prev");
+    const nextProc =
+      navigationProc && navigationProc.querySelector(".navigation-next");
+
+    prevProc.addEventListener("click", () => {
+      processMob.slidePrev();
+      processList.slidePrev();
+    });
+
+    nextProc.addEventListener("click", () => {
+      processMob.slideNext();
+      processList.slideNext();
+    });
+  } else {
+    processItems.forEach((item, id) => {
+      item.addEventListener("click", () => {
+        const description = item.querySelector(".process__list-description");
+        processItems.forEach((elem) => {
+          elem.classList.remove("active");
+          const description = elem.querySelector(".process__list-description");
+          description.style.height = 0;
+        });
+        item.classList.add("active");
+        const height = description.scrollHeight;
+        console.log(height);
+        description.style.height = `${height}px`;
+        swiperProcess.slideTo(id);
+        arrSliders.forEach((slider) => {
+          slider.slideTo(id);
+        });
+      });
+    });
+  }
 
   let swiperBanner1 = new Swiper(".banner__main-slider", {
     slidesPerView: 1,
@@ -323,12 +410,15 @@ document.addEventListener("DOMContentLoaded", () => {
   if (advantages) {
     const advantagesRight = new Swiper(".advantages__right-slider", {
       direction: "vertical",
-      slidesPerView: 1,
-      speed: 3000,
-      spaceBetween: remToPx(34),
+      slidesPerView: "auto",
+      spaceBetween: remToPx(5),
+      speed: 1000,
       breakpoints: {
         769: {
-          spaceBetween: 0,
+          irection: "vertical",
+          slidesPerView: 1,
+          spaceBetween: remToPx(34),
+          speed: 3000,
         },
       },
     });

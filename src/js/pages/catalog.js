@@ -14,16 +14,14 @@ import { screenWidth } from "../utils/contants";
 
 const filterBtn = document.querySelector(".catalog__filter-btn");
 const filterMenu = document.querySelector(".catalog__filter-menu");
-const catalogPag = document.querySelectorAll(".catalog__pagination-number");
-const catalogNext = document.querySelector(".catalog__controls-next");
-const catalogPrev = document.querySelector(".catalog__controls-prev");
 const filterCount = document.querySelector(".catalog__filter-count");
 const filterResets = document.querySelectorAll(".catalog__filter-reset");
 const filtersItems = document.querySelectorAll('input[type="checkbox"]');
 
-filterMenu.addEventListener("submit", (e) => {
-  e.preventDefault();
-});
+filterMenu &&
+  filterMenu.addEventListener("submit", (e) => {
+    e.preventDefault();
+  });
 let i = 0;
 
 // let count = 0;
@@ -66,31 +64,42 @@ filtersItems.forEach((item) => {
   });
 });
 
-catalogNext.addEventListener("click", (e) => {
-  if (i < catalogPag.length - 2) {
-    catalogPag.forEach((pag, id) => {
-      if (pag.classList.contains("active")) {
-        i = id;
-      }
-      pag.classList.remove("active");
-    });
-    console.log(i, catalogPag.length - 1);
+const prevButton = document.querySelector(".catalog__controls-prev");
+const nextButton = document.querySelector(".catalog__controls-next");
+const paginationButtons = document.querySelectorAll(
+  ".catalog__pagination-number"
+);
 
-    catalogPag[i + 1].classList.add("active");
-  }
-});
+let activeIndex = 0;
 
-catalogPrev.addEventListener("click", (e) => {
-  if (i > 1) {
-    catalogPag.forEach((pag, id) => {
-      if (pag.classList.contains("active")) {
-        i = id;
+prevButton &&
+  prevButton.addEventListener("click", () => {
+    if (activeIndex > 0) {
+      paginationButtons[activeIndex].classList.remove("active");
+      activeIndex--;
+      paginationButtons[activeIndex].classList.add("active");
+    }
+  });
+
+nextButton &&
+  nextButton.addEventListener("click", () => {
+    if (activeIndex < paginationButtons.length - 1) {
+      paginationButtons[activeIndex].classList.remove("active");
+      activeIndex++;
+      paginationButtons[activeIndex].classList.add("active");
+    }
+  });
+
+paginationButtons &&
+  paginationButtons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      if (index !== activeIndex) {
+        paginationButtons[activeIndex].classList.remove("active");
+        activeIndex = index;
+        paginationButtons[activeIndex].classList.add("active");
       }
-      pag.classList.remove("active");
     });
-    catalogPag[i - 1].classList.add("active");
-  }
-});
+  });
 
 filterBtn &&
   filterBtn.addEventListener("click", () => {
@@ -123,12 +132,4 @@ const swiper = new Swiper(".category_ring__list", {
       spaceBetween: remToPx(6),
     },
   },
-});
-catalogPag.forEach((item) => {
-  item.addEventListener("click", () => {
-    catalogPag.forEach((elem) => {
-      elem.classList.remove("active");
-    });
-    item.classList.add("active");
-  });
 });
