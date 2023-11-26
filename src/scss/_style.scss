@@ -837,6 +837,13 @@ body {
         top: -4.2rem;
         right: 5.6rem;
         order: 1;
+        .btn-text--first {
+          margin-left: -3.6rem;
+        }
+        .btn-text {
+          margin-right: -6rem;
+          letter-spacing: 0.65rem;
+        }
       }
       &-description {
         width: 42.8rem;

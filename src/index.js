@@ -17,6 +17,8 @@ import "wowjs/css/libs/animate.css";
 import ymaps from "ymaps";
 import remToPx from "./js/utils/rem";
 
+const mapItems = document.querySelectorAll(".map__list-address");
+
 new WOW({
   resetAnimation: false,
   callback: function (box) {
@@ -39,6 +41,7 @@ animatedElement &&
     animatedElement.classList.add(".wow anim-fill-text");
     // Код, который выполнится, когда элемент появится на экране
   });
+
 ymaps
   .load()
   .then((maps) => {
@@ -47,15 +50,31 @@ ymaps
       zoom: 17,
       controls: [],
     });
-    var myPlacemark = new maps.Placemark(
-      [55.7893423, 37.6569675],
-      {},
-      {
-        iconLayout: "default#image", // Используем стандартный макет изображения
-        iconImageHref: "./assets/images/placemark.svg", // Путь к вашей иконке
-        // iconImageSize: [remToPx(12.6), remToPx(5.7)], // Размеры вашей иконки
-      }
-    );
-    map.geoObjects.add(myPlacemark);
+
+    Array.prototype.forEach.call(mapItems, function (item) {
+      var coords = item.dataset.address.split(",").map(function (coord) {
+        return parseFloat(coord.trim());
+      });
+      console.log(coords);
+      var placemark = new maps.Placemark(
+        coords,
+        {},
+        {
+          iconLayout: "default#image", // Используем стандартный макет изображения
+          iconImageHref: "./assets/images/placemark.svg", // Путь к вашей иконке
+          // iconImageSize: [remToPx(12.6), remToPx(5.7)], // Размеры вашей иконки
+        }
+      );
+      map.geoObjects.add(placemark);
+
+      // При клике на элемент списка центрируем карту на метке
+      item.addEventListener("click", function () {
+        map.setCenter(coords);
+        mapItems.forEach((mapItem) => {
+          mapItem.classList.remove("active");
+        });
+        item.classList.add("active");
+      });
+    });
   })
   .catch((error) => console.log("Failed to load Yandex Maps", error));

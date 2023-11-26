@@ -1152,6 +1152,12 @@
       .banner__catalog {
         padding-top: 21rem;
         gap: 4rem;
+        .btn-text.coll {
+          right: -2.8rem;
+          .btn-text--first {
+            margin-left: -8rem;
+          }
+        }
       }
     }
     &__video {

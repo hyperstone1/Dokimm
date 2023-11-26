@@ -29,6 +29,12 @@ collestions.forEach((item) => {
   const collectionRight = item.querySelector(".collection__right");
   const colPrev = item.querySelector(".navigation-prev");
   const colNext = item.querySelector(".navigation-next");
+  const curNumber = document.querySelector(
+    ".collection__controls-pagination .pagination-current"
+  );
+  const LastNumber = document.querySelector(
+    ".collection__controls-pagination .pagination-last"
+  );
 
   const leftSlider = new Swiper(collectionLeft, {
     slidesPerView: 1,
@@ -40,6 +46,14 @@ collestions.forEach((item) => {
     // spaceBetween: 20,
     centeredSlides: false,
     allowTouchMove: false,
+    on: {
+      init: function (swiper) {
+        LastNumber.textContent = swiper.slides.length;
+      },
+      slideChange: function (swiper) {
+        curNumber.textContent = swiper.activeIndex + 1;
+      },
+    },
     creativeEffect: {
       prev: {
         shadow: true,

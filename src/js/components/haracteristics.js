@@ -81,15 +81,17 @@ const bannerCard2 = new Swiper(".banner__card-imgs", {
     },
   },
 });
-navCardNext.addEventListener("click", () => {
-  bannerCard1.slideNext();
-  bannerCard2.slideNext();
-});
+navCardNext &&
+  navCardNext.addEventListener("click", () => {
+    bannerCard1.slideNext();
+    bannerCard2.slideNext();
+  });
 
-navCardPrev.addEventListener("click", () => {
-  bannerCard1.slidePrev();
-  bannerCard2.slidePrev();
-});
+navCardPrev &&
+  navCardPrev.addEventListener("click", () => {
+    bannerCard1.slidePrev();
+    bannerCard2.slidePrev();
+  });
 
 const haractSlider = new Swiper(".haracteristics__left-slider", {
   slidesPerView: 1,

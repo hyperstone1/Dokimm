@@ -17,6 +17,12 @@ const filterMenu = document.querySelector(".catalog__filter-menu");
 const filterCount = document.querySelector(".catalog__filter-count");
 const filterResets = document.querySelectorAll(".catalog__filter-reset");
 const filtersItems = document.querySelectorAll('input[type="checkbox"]');
+const categoryCur = document.querySelector(
+  ".category__top-pagination .pagination-current"
+);
+const categoryLast = document.querySelector(
+  ".category__top-pagination .pagination-last"
+);
 
 filterMenu &&
   filterMenu.addEventListener("submit", (e) => {
@@ -34,6 +40,7 @@ filterResets.forEach((item) => {
     filterCount.classList.add("invisible");
     item.classList.add("invisible");
     filterMenu.classList.remove("visible");
+    document.body.classList.remove("hidden");
   });
 });
 
@@ -125,6 +132,14 @@ const swiper = new Swiper(".category_ring__list", {
   navigation: {
     prevEl: navPrev,
     nextEl: navNext,
+  },
+  on: {
+    init: function (swiper) {
+      categoryLast.textContent = swiper.slides.length;
+    },
+    slideChange: function (swiper) {
+      categoryCur.textContent = swiper.activeIndex + 1;
+    },
   },
   breakpoints: {
     769: {

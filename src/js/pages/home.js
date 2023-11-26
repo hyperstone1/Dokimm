@@ -148,6 +148,42 @@ document.addEventListener("DOMContentLoaded", () => {
     arrSliders.push(swiper);
   });
 
+  function swiperCard() {
+    if (screenWidth <= 768) {
+      if (!init) {
+        init = true;
+        processList = new Swiper(".process__list", {
+          slidesPerView: 1,
+          centeredSlides: true,
+          spaceBetween: remToPx(10),
+          speed: 1000,
+          allowTouchMove: false,
+          navigation: {
+            prevEl: navigationProc
+              ? navigationProc.querySelector(".navigation-prev")
+              : null,
+            nextEl: navigationProc
+              ? navigationProc.querySelector(".navigation-next")
+              : null,
+          },
+          on: {
+            init: function (swiper) {
+              processPagCur.textContent = swiper.activeIndex + 1;
+              processPagLast.textContent = swiper.slides.length;
+            },
+            slideChange: function (swiper) {
+              processPagCur.textContent = swiper.activeIndex + 1;
+            },
+          },
+        });
+      }
+    } else if (init) {
+      processList.destroy();
+      init = false;
+    }
+  }
+  swiperCard();
+
   const swiperProcess = new Swiper(processSliderMain, {
     modules: [Navigation, EffectCreative],
     slidesPerView: 1,
@@ -213,42 +249,6 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  function swiperCard() {
-    if (screenWidth <= 768) {
-      if (!init) {
-        init = true;
-        processList = new Swiper(".process__list", {
-          slidesPerView: 1,
-          centeredSlides: true,
-          spaceBetween: remToPx(10),
-          speed: 1000,
-          allowTouchMove: false,
-          navigation: {
-            prevEl: navigationProc
-              ? navigationProc.querySelector(".navigation-prev")
-              : null,
-            nextEl: navigationProc
-              ? navigationProc.querySelector(".navigation-next")
-              : null,
-          },
-          on: {
-            init: function (swiper) {
-              processPagCur.textContent = swiper.activeIndex + 1;
-              processPagLast.textContent = swiper.slides.length;
-            },
-            slideChange: function (swiper) {
-              processPagCur.textContent = swiper.activeIndex + 1;
-            },
-          },
-        });
-      }
-    } else if (init) {
-      processList.destroy();
-      init = false;
-    }
-  }
-  swiperCard();
-
   if (screenWidth < 769) {
     const processMob = new Swiper(".process__slider-mob", {
       slidesPerView: 1,
@@ -283,15 +283,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextProc =
       navigationProc && navigationProc.querySelector(".navigation-next");
 
-    prevProc.addEventListener("click", () => {
-      processMob.slidePrev();
-      processList.slidePrev();
-    });
+    prevProc &&
+      prevProc.addEventListener("click", () => {
+        processMob.slidePrev();
+        processList.slidePrev();
+      });
 
-    nextProc.addEventListener("click", () => {
-      processMob.slideNext();
-      processList.slideNext();
-    });
+    nextProc &&
+      nextProc.addEventListener("click", () => {
+        processMob.slideNext();
+        processList.slideNext();
+      });
   } else {
     processItems.forEach((item, id) => {
       item.addEventListener("click", () => {

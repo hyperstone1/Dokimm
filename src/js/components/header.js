@@ -81,17 +81,24 @@ headerClose.addEventListener("click", () => {
 
 header.addEventListener("mouseover", (e) => {
   if (window.innerWidth >= 769) {
-    if (e.target.classList.contains("link-category")) {
+    if (
+      e.target.classList.contains("link-category") ||
+      e.target.closest(".link-category")
+    ) {
       let idMenu = null;
+      const target =
+        e.target.tagName.toLowerCase() === "a"
+          ? e.target.closest(".link-category")
+          : e.target;
       headerLinks.forEach((link, id) => {
         link.classList.remove("active");
-        link === e.target ? (idMenu = id) : null;
+        link === target ? (idMenu = id) : null;
       });
       headerMenu.forEach((menu) => {
         menu.classList.remove("visible");
       });
       idMenu != null ? headerMenu[idMenu].classList.add("visible") : null;
-      e.target.classList.add("active");
+      target.classList.add("active");
       header.classList.add("active");
       searchResult.classList.remove("visible");
       headerSearch.forEach((btn) => {

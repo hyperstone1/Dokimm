@@ -43,9 +43,18 @@
         <div class="map__list">
           <div class="map__list-title">Магазины- партнеры</div>
           <ul class="map__list-content">
-            <li class="map__list-address active">Москва, Лофт Гарден</li>
-            <li class="map__list-address">Москва, ТЦ Авиапарк</li>
-            <li class="map__list-address">Санкт-Петербург, Европолис</li>
+            <li
+              data-address="55.7893423, 37.6569675"
+              class="map__list-address active"
+            >
+              Москва, Лофт Гарден
+            </li>
+            <li data-address="55.7902891, 37.5308876" class="map__list-address">
+              Москва, ТЦ Авиапарк
+            </li>
+            <li data-address="59.9880254, 30.3533107" class="map__list-address">
+              Санкт-Петербург, Европолис
+            </li>
           </ul>
         </div>
         <div id="map"></div>
@@ -138,6 +147,7 @@
                 </svg>
                 <img src="./assets/images/arrows.svg" alt="" />
               </div>
+              <div class="btn-back"></div>
               <div class="request__btn-text btn-text">
                 <div class="request__btn-text--first">оставить</div>
                 <div class="request__btn-text--second">заявку</div>
