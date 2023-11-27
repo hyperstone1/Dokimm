@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <include
+      src="./components/header.html"
+      data-text='{"header": {"class": "wow about-opac-anim"}}'
+    ></include>
+
+    <div class="swiper-example">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide normal-slide">Slide 1</div>
+        <div class="swiper-slide normal-slide">Slide 2</div>
+        <div class="swiper-slide active-slide">Active Slide</div>
+        <div class="swiper-slide prev-slide">Prev Slide</div>
+        <div class="swiper-slide next-slide">Next Slide</div>
+      </div>
+    </div>
+
+    <style>
+      .swiper-slide {
+        /* Обычные слайды */
+        width: 300px;
+        height: 200px;
+        background-color: #000000;
+      }
+
+      .swiper-slide.active-slide {
+        /* Активный слайд */
+        width: 600px;
+        height: 400px;
+      }
+
+      .swiper-slide.prev-slide,
+      .swiper-slide.next-slide {
+        /* Prev и Next слайды */
+        width: 150px;
+        height: 100px;
+      }
+    </style>
+
+    <script></script>
+    <include src="./html/components/footer.html"></include>
+  </body>
+</html>

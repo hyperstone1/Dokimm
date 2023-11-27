@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     forms.forEach((form) => {
       form.addEventListener("submit", (e) => {
+        const main = form.closest(".modal").querySelector(".modal__main");
+        const success = form.closest(".modal").querySelector(".modal__success");
         e.preventDefault();
         console.log(e);
         inputs.forEach((item) => {
@@ -36,6 +38,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
         });
+        if (form.classList.contains("modal__form")) {
+          success.classList.add("visible");
+          main.classList.remove("visible");
+        }
       });
     });
 

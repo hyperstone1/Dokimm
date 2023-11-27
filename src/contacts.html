@@ -8,155 +8,167 @@
   <body>
     <include src="./html/components/header.html"></include>
 
-    <section class="contacts">
-      <div class="contacts_container container">
-        <div class="contacts__banner">
-          <div class="contacts__banner-img--main">
-            <img src="./assets/images/texture.jpg" alt="" />
+    <main>
+      <section class="contacts">
+        <div class="contacts_container container">
+          <div class="contacts__banner">
+            <div class="contacts__banner-img--main">
+              <img src="./assets/images/texture.jpg" alt="" />
+            </div>
+            <div class="contacts__banner-img--another">
+              <img src="./assets/images/contacts_2.jpg" alt="" />
+            </div>
+            <div class="contacts__text">
+              <div class="contacts__text-title title">контакты</div>
+              <ul class="contacts__text-list">
+                <li class="contacts__text-info">
+                  <p class="contacts__text-subtitle">телефон:</p>
+                  <a href="tel:+7(926)591-35-91" class="contacts__text-link"
+                    >+7 (926) 591-35-91</a
+                  >
+                </li>
+                <li class="contacts__text-info">
+                  <p class="contacts__text-subtitle">email:</p>
+                  <a href="mailto:dokimm@mail.ru" class="contacts__text-link"
+                    >dokimm@mail.ru</a
+                  >
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="contacts__banner-img--another">
-            <img src="./assets/images/contacts_2.jpg" alt="" />
-          </div>
-          <div class="contacts__text">
-            <div class="contacts__text-title title">контакты</div>
-            <ul class="contacts__text-list">
-              <li class="contacts__text-info">
-                <p class="contacts__text-subtitle">телефон:</p>
-                <a href="tel:+7(926)591-35-91" class="contacts__text-link"
-                  >+7 (926) 591-35-91</a
-                >
+        </div>
+      </section>
+
+      <section class="map">
+        <div class="map_container container">
+          <div class="map__list">
+            <div class="map__list-title">Магазины- партнеры</div>
+            <ul class="map__list-content">
+              <li
+                data-address="55.7893423, 37.6569675"
+                class="map__list-address active"
+              >
+                Москва, Лофт Гарден
               </li>
-              <li class="contacts__text-info">
-                <p class="contacts__text-subtitle">email:</p>
-                <a href="mailto:dokimm@mail.ru" class="contacts__text-link"
-                  >dokimm@mail.ru</a
-                >
+              <li
+                data-address="55.7902891, 37.5308876"
+                class="map__list-address"
+              >
+                Москва, ТЦ Авиапарк
+              </li>
+              <li
+                data-address="59.9880254, 30.3533107"
+                class="map__list-address"
+              >
+                Санкт-Петербург, Европолис
               </li>
             </ul>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="map">
-      <div class="map_container container">
-        <div class="map__list">
-          <div class="map__list-title">Магазины- партнеры</div>
-          <ul class="map__list-content">
-            <li
-              data-address="55.7893423, 37.6569675"
-              class="map__list-address active"
-            >
-              Москва, Лофт Гарден
-            </li>
-            <li data-address="55.7902891, 37.5308876" class="map__list-address">
-              Москва, ТЦ Авиапарк
-            </li>
-            <li data-address="59.9880254, 30.3533107" class="map__list-address">
-              Санкт-Петербург, Европолис
-            </li>
-          </ul>
-        </div>
-        <div id="map"></div>
-        <div class="map__text">
-          <div class="map__text-subtitle">Pезиденция Лофт Гарден</div>
-          <div class="map__text-address">
-            <p>Москва,</p>
-            <p>ул.2-я Рыбинская, д.13</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="request">
-      <div class="request__container container">
-        <div class="request__top wow anim-form-text" data-wow-duration="2s">
-          <div class="request__top-text">
-            <div class="request__top-text--left">оставьте заявку</div>
-            <div class="request__top-text--right">Закажите изделие</div>
-          </div>
-        </div>
-        <div class="request__content">
-          <div
-            class="request__content-img wow anim-ring"
-            data-wow-duration="2s"
-          >
-            <img src="./assets/images/ring.png" alt="" />
-          </div>
-          <div
-            class="request__content-wrapper wow anim-category"
-            data-wow-duration="2s"
-          >
-            <div
-              class="request__content-text"
-              data-content="даря бриллианты, <br />вы проявляете чистую <br />любовь"
-            >
-              даря бриллианты, <br />вы проявляете чистую <br />любовь
-            </div>
-            <div
-              class="request__content-text--anim wow"
-              data-wow-delay="2s"
-              data-wow-duration="1s"
-            >
-              даря бриллианты, <br />вы проявляете чистую <br />любовь
+          <div id="map"></div>
+          <div class="map__text">
+            <div class="map__text-subtitle">Pезиденция Лофт Гарден</div>
+            <div class="map__text-address">
+              <p>Москва,</p>
+              <p>ул.2-я Рыбинская, д.13</p>
             </div>
           </div>
         </div>
-        <div class="request__content-text-order">Закажите изделие</div>
-        <div class="request__main">
-          <form class="request__form">
+      </section>
+
+      <section class="request">
+        <div class="request__container container">
+          <div class="request__top wow anim-form-text" data-wow-duration="2s">
+            <div class="request__top-text">
+              <div class="request__top-text--left">оставьте заявку</div>
+              <div class="request__top-text--right">Закажите изделие</div>
+            </div>
+          </div>
+          <div class="request__content">
             <div
-              class="request__form-container wow anim-form"
+              class="request__content-img wow anim-ring"
               data-wow-duration="2s"
             >
-              <div class="request__form-wrapper">
-                <input class="form_input" type="text" placeholder="Ваше имя" />
-              </div>
-              <div class="request__form-wrapper">
-                <input class="form_input" type="text" placeholder="e-mail" />
-              </div>
-              <div class="request__form-wrapper">
-                <input
-                  class="form_input"
-                  id="phone"
-                  type="text"
-                  placeholder="телефон"
-                />
-              </div>
-              <div class="request__form-info">
-                Отправляя форму, вы принимаете пользовательское соглашение
-              </div>
+              <img src="./assets/images/ring.png" alt="" />
             </div>
-
-            <button
-              class="request__btn btn wow anim-btn-form"
+            <div
+              class="request__content-wrapper wow anim-category"
               data-wow-duration="2s"
             >
-              <div class="request__btn-arrow btn-arrow">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="109"
-                  height="16"
-                  viewBox="0 0 109 16"
-                  fill="none"
-                >
-                  <path
-                    d="M108.707 8.71101C109.098 8.32049 109.098 7.68732 108.707 7.2968L102.343 0.932838C101.953 0.542314 101.319 0.542314 100.929 0.932838C100.538 1.32336 100.538 1.95653 100.929 2.34705L106.586 8.00391L100.929 13.6608C100.538 14.0513 100.538 14.6844 100.929 15.075C101.319 15.4655 101.953 15.4655 102.343 15.075L108.707 8.71101ZM0 9.00391H108V7.00391H0V9.00391Z"
-                    fill="white"
+              <div
+                class="request__content-text"
+                data-content="даря бриллианты, <br />вы проявляете чистую <br />любовь"
+              >
+                даря бриллианты, <br />вы проявляете чистую <br />любовь
+              </div>
+              <div
+                class="request__content-text--anim wow"
+                data-wow-delay="2s"
+                data-wow-duration="1s"
+              >
+                даря бриллианты, <br />вы проявляете чистую <br />любовь
+              </div>
+            </div>
+          </div>
+          <div class="request__content-text-order">Закажите изделие</div>
+          <div class="request__main">
+            <form class="request__form">
+              <div
+                class="request__form-container wow anim-form"
+                data-wow-duration="2s"
+              >
+                <div class="request__form-wrapper">
+                  <input
+                    class="form_input"
+                    type="text"
+                    placeholder="Ваше имя"
                   />
-                </svg>
-                <img src="./assets/images/arrows.svg" alt="" />
+                </div>
+                <div class="request__form-wrapper">
+                  <input class="form_input" type="text" placeholder="e-mail" />
+                </div>
+                <div class="request__form-wrapper">
+                  <input
+                    class="form_input"
+                    id="phone"
+                    type="text"
+                    placeholder="телефон"
+                  />
+                </div>
+                <div class="request__form-info">
+                  Отправляя форму, вы принимаете пользовательское соглашение
+                </div>
               </div>
-              <div class="btn-back"></div>
-              <div class="request__btn-text btn-text">
-                <div class="request__btn-text--first">оставить</div>
-                <div class="request__btn-text--second">заявку</div>
-              </div>
-            </button>
-          </form>
+
+              <button
+                class="request__btn btn wow anim-btn-form"
+                data-wow-duration="2s"
+              >
+                <div class="request__btn-arrow btn-arrow">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="109"
+                    height="16"
+                    viewBox="0 0 109 16"
+                    fill="none"
+                  >
+                    <path
+                      d="M108.707 8.71101C109.098 8.32049 109.098 7.68732 108.707 7.2968L102.343 0.932838C101.953 0.542314 101.319 0.542314 100.929 0.932838C100.538 1.32336 100.538 1.95653 100.929 2.34705L106.586 8.00391L100.929 13.6608C100.538 14.0513 100.538 14.6844 100.929 15.075C101.319 15.4655 101.953 15.4655 102.343 15.075L108.707 8.71101ZM0 9.00391H108V7.00391H0V9.00391Z"
+                      fill="white"
+                    />
+                  </svg>
+                  <img src="./assets/images/arrows.svg" alt="" />
+                </div>
+                <div class="btn-back"></div>
+                <div class="request__btn-text btn-text">
+                  <div class="request__btn-text--first">оставить</div>
+                  <div class="request__btn-text--second">заявку</div>
+                </div>
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
     <include src="./html/components/footer.html"></include>
   </body>

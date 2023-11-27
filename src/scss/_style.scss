@@ -560,12 +560,19 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-
   transform: translateX(-200%);
   transition: transform 0.3s ease-in-out;
   z-index: 1111;
   &.visible {
     transform: translateX(0);
+  }
+  &__success {
+    display: none;
+    padding-top: 6rem;
+    &.visible {
+      display: flex;
+      flex-direction: column;
+    }
   }
   &_container {
     position: relative;
@@ -585,11 +592,23 @@ body {
     }
   }
   &__main {
+    display: none;
     padding-top: 6rem;
     width: 53.3rem;
-    display: flex;
     flex-direction: column;
     gap: 5rem;
+    &.visible {
+      display: flex;
+    }
+    &-desc {
+      margin-top: 2rem;
+      color: #909091;
+      font-size: 1.8rem;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 1.4;
+      letter-spacing: 0.09rem;
+    }
     &-close {
       position: absolute;
       top: 1.8rem;
