@@ -10,6 +10,7 @@ import "./js/components/header";
 import "./js/components/filter";
 import "./js/components/collection";
 import "./js/components/haracteristics";
+import "./js/components/modal";
 import "./js/utils/gsap";
 import { WOW } from "wowjs";
 import "animate.css";
