@@ -12,4 +12,9 @@ btnModal.forEach((btn) => {
 modalClose.addEventListener("click", (e) => {
   modal.classList.remove("visible");
   overlay.classList.remove("visible");
+  setTimeout(() => {
+    modal.querySelector(".modal__image").classList.remove("visible");
+    modal.querySelector(".modal__success").classList.remove("visible");
+    modal.querySelector(".modal__main").classList.add("visible");
+  }, 300);
 });

@@ -52,20 +52,20 @@ const bannerCard1 = new Swiper(".banner__card-slider", {
 
 const bannerCard2 = new Swiper(".banner__card-imgs", {
   slidesPerView: 1,
-  spaceBetween: 20,
-  modules: [EffectCreative],
+  spaceBetween: 0,
+  // modules: [EffectCreative],
   speed: 1500,
   slidesPerView: 1,
-  effect: "creative",
-  creativeEffect: {
-    prev: {
-      shadow: true,
-      translate: ["-20%", 0, -1],
-    },
-    next: {
-      translate: ["100%", 0, 0],
-    },
-  },
+  // effect: "creative",
+  // creativeEffect: {
+  //   prev: {
+  //     shadow: true,
+  //     translate: ["-20%", 0, -1],
+  //   },
+  //   next: {
+  //     translate: ["100%", 0, 0],
+  //   },
+  // },
   on: {
     init: function (swiper) {
       swiper.slides.forEach((item, id) => {

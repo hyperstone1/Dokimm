@@ -1,5 +1,5 @@
 import IMask from "imask";
-import { emailRegex } from "../utils/contants";
+import { emailRegex, screenWidth } from "../utils/contants";
 document.addEventListener("DOMContentLoaded", () => {
   const phone = document.querySelectorAll(".form_phone");
   const inputs = document.querySelectorAll(".form_input");
@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
       form.addEventListener("submit", (e) => {
         const main = form.closest(".modal").querySelector(".modal__main");
         const success = form.closest(".modal").querySelector(".modal__success");
+        const formImage = form.closest(".modal").querySelector(".modal__image");
         e.preventDefault();
         console.log(e);
         inputs.forEach((item) => {
@@ -40,7 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         if (form.classList.contains("modal__form")) {
           success.classList.add("visible");
+
           main.classList.remove("visible");
+          if (formImage && screenWidth < 769) {
+            formImage.classList.add("visible");
+          }
         }
       });
     });

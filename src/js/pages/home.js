@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //     },
     //   },
     //   effect: 'creative',
-    speed: 1500,
+    speed: 800,
     navigation: {
       prevEl: navigationCat
         ? navigationCat.querySelector(".navigation-prev")
@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
           irection: "vertical",
           slidesPerView: 1,
           spaceBetween: remToPx(16),
-          speed: 3000,
+          speed: 1500,
         },
       },
     });

@@ -26,7 +26,7 @@ const collPagLast = document.querySelector(
 collestions.forEach((item) => {
   const collectionLeft = item.querySelector(".collection__left");
   const collectionMain = item.querySelector(".collection__main");
-  const collectionRight = item.querySelector(".collection__right");
+  // const collectionRight = item.querySelector(".collection__right");
   const colPrev = item.querySelector(".navigation-prev");
   const colNext = item.querySelector(".navigation-next");
   const curNumber = document.querySelector(
@@ -85,27 +85,27 @@ collestions.forEach((item) => {
       slideChange: function (swiper) {},
     },
   });
-  const rightSlider = new Swiper(collectionRight, {
-    slidesPerView: 1,
-    modules: [Navigation, Pagination, EffectCreative, Thumbs, EffectFade],
-    speed: 1500,
-    slidesPerView: "auto",
-    // effect: "slide",
-    effect: screenWidth < 769 ? "slide" : "fade",
-    // spaceBetween: 20,
-    centeredSlides: false,
-    allowTouchMove: false,
-  });
+  // const rightSlider = new Swiper(collectionRight, {
+  //   slidesPerView: 1,
+  //   modules: [Navigation, Pagination, EffectCreative, Thumbs, EffectFade],
+  //   speed: 1500,
+  //   slidesPerView: "auto",
+  //   // effect: "slide",
+  //   effect: screenWidth < 769 ? "slide" : "fade",
+  //   // spaceBetween: 20,
+  //   centeredSlides: false,
+  //   allowTouchMove: false,
+  // });
   console.log(colPrev);
   colPrev.addEventListener("click", () => {
     leftSlider.slidePrev();
     mainSlider.slidePrev();
-    rightSlider.slidePrev();
+    // rightSlider.slidePrev();
   });
   colNext.addEventListener("click", () => {
     leftSlider.slideNext();
     mainSlider.slideNext();
-    rightSlider.slideNext();
+    // rightSlider.slideNext();
   });
 });
 
@@ -118,6 +118,7 @@ const collectionText = new Swiper(".col_desc__slider", {
   // pagination: {
   //   el: controls.querySelector(".pagination"),
   // },
+  speed: 1000,
   allowTouchMove: false,
   on: {
     init: function (swiper) {

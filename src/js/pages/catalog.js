@@ -129,6 +129,7 @@ const swiper = new Swiper(".category_ring__list", {
   slidesPerView: "auto",
   spaceBetween: remToPx(4),
   modules: [Navigation],
+  speed: 1500,
   navigation: {
     prevEl: navPrev,
     nextEl: navNext,

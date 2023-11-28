@@ -568,6 +568,8 @@ body {
   }
   &__success {
     display: none;
+    width: 61.9rem;
+    padding-right: 7.7rem;
     padding-top: 6rem;
     &.visible {
       display: flex;
@@ -584,7 +586,7 @@ body {
     background-size: 100% 100%;
   }
   &__image {
-    width: 39.1rem;
+    flex: 1;
     height: 100%;
     img {
       height: 100%;
@@ -592,13 +594,17 @@ body {
     }
   }
   &__main {
+    width: 74.4rem;
     display: none;
-    padding-top: 6rem;
-    width: 53.3rem;
-    flex-direction: column;
-    gap: 5rem;
     &.visible {
       display: flex;
+    }
+    &-container {
+      padding-top: 6rem;
+      width: 53.3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 5rem;
     }
     &-desc {
       margin-top: 2rem;
@@ -676,6 +682,12 @@ body {
       position: absolute;
       right: 6rem;
       bottom: 6rem;
+      .btn-text {
+        right: -1rem;
+      }
+      .request__btn-text--first {
+        margin-left: -5rem;
+      }
     }
     &-agreement {
       width: 26.5rem;
@@ -1001,6 +1013,91 @@ body {
         order: 3;
         margin: 0;
         font-size: 2.6rem;
+      }
+    }
+  }
+  .modal {
+    &_container {
+      width: 93%;
+      height: auto;
+      max-height: 87vh;
+      flex-direction: column;
+      gap: 6.4rem;
+      padding: 0;
+    }
+    &__image {
+      display: none;
+      flex: auto;
+      min-height: 35rem;
+      height: 62.2rem;
+      img {
+        object-position: bottom;
+      }
+      &.visible {
+        display: block;
+        width: 100%;
+        // height: 62.2rem;
+      }
+    }
+    &__main {
+      padding: 0;
+      width: 100%;
+      padding: 11.2rem 3.2rem 6.4rem 3.2rem;
+      &-container {
+        width: 100%;
+        padding-top: 0;
+      }
+      &-title {
+        width: 100%;
+        text-align: center;
+        font-size: 7.2rem;
+      }
+      &-desc {
+        margin-top: 3rem;
+        text-align: center;
+        font-size: 2.8rem;
+      }
+    }
+    &__form {
+      width: 100%;
+      &-btn {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        margin: 0 auto;
+        margin-top: 9.6rem;
+        .btn-text {
+          right: -8rem;
+        }
+        .request__btn-text--first {
+          margin-left: -7.6rem;
+        }
+      }
+      &-wrapper {
+        input {
+          font-size: 2.6rem;
+          &::placeholder {
+            color: #fff;
+            font-size: 2.6rem;
+          }
+        }
+        &:nth-child(3) {
+          margin-bottom: 4rem;
+        }
+      }
+      &-agreement {
+        align-self: flex-end;
+        width: 55.5rem;
+        text-align: center;
+        font-size: 2.8rem;
+      }
+    }
+
+    &__success {
+      width: 100%;
+      padding: 0 3.2rem 6.4rem 3.2rem;
+      .modal__form-btn {
+        margin-top: 6.4rem;
       }
     }
   }

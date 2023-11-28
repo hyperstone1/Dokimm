@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
           start: "top center",
           end: "bottom center",
           scrub: 3,
-          markers: true,
+          // markers: true,
         },
       });
     } else {
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
           start: "top center",
           end: "bottom center",
           scrub: 3,
-          markers: true,
+          // markers: true,
         },
       });
     } else {

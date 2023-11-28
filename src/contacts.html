@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Главная</title>
+    <script
+      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&apikey=ffac2b37-9f44-43d8-8e3e-92f15073c2d1"
+      type="text/javascript"
+    ></script>
   </head>
   <body>
     <include src="./html/components/header.html"></include>
@@ -168,6 +172,49 @@
           </div>
         </div>
       </section>
+
+      <script>
+        const mapItems = document.querySelectorAll(".map__list-address");
+
+        ymaps
+          .load()
+          .then((maps) => {
+            const map = new maps.Map("map", {
+              center: [55.7893423, 37.6569675],
+              zoom: 17,
+              controls: [],
+            });
+
+            Array.prototype.forEach.call(mapItems, function (item) {
+              var coords = item.dataset.address
+                .split(",")
+                .map(function (coord) {
+                  return parseFloat(coord.trim());
+                });
+              console.log(coords);
+              var placemark = new maps.Placemark(
+                coords,
+                {},
+                {
+                  iconLayout: "default#image", // Используем стандартный макет изображения
+                  iconImageHref: "./assets/images/placemark.svg", // Путь к вашей иконке
+                  // iconImageSize: [remToPx(12.6), remToPx(5.7)], // Размеры вашей иконки
+                }
+              );
+              map.geoObjects.add(placemark);
+
+              // При клике на элемент списка центрируем карту на метке
+              item.addEventListener("click", function () {
+                map.setCenter(coords);
+                mapItems.forEach((mapItem) => {
+                  mapItem.classList.remove("active");
+                });
+                item.classList.add("active");
+              });
+            });
+          })
+          .catch((error) => console.log("Failed to load Yandex Maps", error));
+      </script>
     </main>
 
     <include src="./html/components/footer.html"></include>
