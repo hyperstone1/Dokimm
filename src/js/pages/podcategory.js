@@ -35,6 +35,26 @@ if (slider) {
       console.log(slider);
     },
   });
+  $(slider).on("beforeChange", function (event, slick, currentSlide) {
+    // Удалить все предыдущие классы slide-prev и slide-next
+    $(".slick-slide").removeClass("slide-prev slide-next");
+
+    console.log("Текущий слайд:", currentSlide);
+
+    // Вычислить следующий слайд
+    const nextSlide = (currentSlide + 2) % slick.slideCount;
+    console.log("Следующий слайд:", nextSlide);
+
+    // Вычислить предыдущий слайд
+    const prevSlide = (currentSlide + slick.slideCount) % slick.slideCount;
+    console.log("Предыдущий слайд:", prevSlide);
+
+    // Добавить класс slide-next к следующему слайду
+    $(`.slick-slide[data-slick-index="${nextSlide}"]`).addClass("slide-next");
+
+    // Добавить класс slide-prev к предыдущему слайду
+    $(`.slick-slide[data-slick-index="${prevSlide}"]`).addClass("slide-prev");
+  });
 }
 // const swiper = new Swiper(".banner__slider", {
 //   // modules: [EffectCreative],

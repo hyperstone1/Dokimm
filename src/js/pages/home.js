@@ -415,11 +415,12 @@ document.addEventListener("DOMContentLoaded", () => {
       slidesPerView: "auto",
       spaceBetween: remToPx(5),
       speed: 1000,
+      allowTouchMove: false,
       breakpoints: {
         769: {
           irection: "vertical",
           slidesPerView: 1,
-          spaceBetween: remToPx(34),
+          spaceBetween: remToPx(16),
           speed: 3000,
         },
       },
@@ -429,6 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // direction: "vertical",
       slidesPerView: 1,
       speed: 1500,
+      allowTouchMove: false,
       // on: {
       //   slideNextTransitionStart: function (swiper) {
       //     advantagesRight.slideNext();
