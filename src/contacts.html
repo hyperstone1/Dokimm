@@ -69,10 +69,24 @@
             </ul>
           </div>
           <div id="map"></div>
-          <div class="map__text">
+          <div class="map__text visible">
             <div class="map__text-subtitle">Pезиденция Лофт Гарден</div>
             <div class="map__text-address">
               <p>Москва,</p>
+              <p>ул.2-я Рыбинская, д.13</p>
+            </div>
+          </div>
+          <div class="map__text">
+            <div class="map__text-subtitle">ТЦ Авиапарк</div>
+            <div class="map__text-address">
+              <p>Москва,</p>
+              <p>ул.2-я Рыбинская, д.13</p>
+            </div>
+          </div>
+          <div class="map__text">
+            <div class="map__text-subtitle">Европолис</div>
+            <div class="map__text-address">
+              <p>Санкт-Петербург,</p>
               <p>ул.2-я Рыбинская, д.13</p>
             </div>
           </div>
@@ -175,6 +189,7 @@
 
       <script>
         const mapItems = document.querySelectorAll(".map__list-address");
+        const mapLoc = document.querySelectorAll(".map__text");
 
         ymaps
           .load()
@@ -185,7 +200,7 @@
               controls: [],
             });
 
-            Array.prototype.forEach.call(mapItems, function (item) {
+            Array.prototype.forEach.call(mapItems, function (item, id) {
               var coords = item.dataset.address
                 .split(",")
                 .map(function (coord) {
@@ -210,6 +225,10 @@
                   mapItem.classList.remove("active");
                 });
                 item.classList.add("active");
+                mapLoc.forEach((loc) => {
+                  loc.classList.remove("visible");
+                });
+                mapLoc[id].classList.add("visible");
               });
             });
           })

@@ -46,9 +46,12 @@
   &__text {
     align-self: center;
     width: 57.7rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 4rem;
+    &.visible {
+      display: flex;
+    }
     &-subtitle {
       width: 14.3rem;
       color: #909091;
