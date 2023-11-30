@@ -68,7 +68,7 @@ const manufacSlider = new Swiper(".manufacturing__slider", {
   centeredSlides: true,
   allowSlidePrev: false,
   allowSlideNext: false,
-  speed: 1000,
+  speed: 700,
   effect: "creative",
   navigation: {
     prevEl: ".manufacturing__top-navigation .navigation-prev",
@@ -148,37 +148,39 @@ const artSlider = new Swiper(".art__slider", {
   //     },
   //   },
 });
-artNavPrev.addEventListener("click", () => {
-  artSlider.slidePrev();
-  artNames.forEach((item) => {
-    item.classList.remove("anim-prev", "anim-next");
+artNavPrev &&
+  artNavPrev.addEventListener("click", () => {
+    artSlider.slidePrev();
+    artNames.forEach((item) => {
+      item.classList.remove("anim-prev", "anim-next");
+    });
+    artNames[artSlider.activeIndex].classList.add("visible", "anim-prev");
+    artNames[artSlider.previousIndex].classList.add("anim-prev-opac");
+    artNavPrev.style.pointerEvents = "none";
+    setTimeout(() => {
+      artNavPrev.style.pointerEvents = "auto";
+      artNames[artSlider.previousIndex].classList.remove("visible");
+      artNames[artSlider.previousIndex].classList.remove("anim-prev-opac");
+    }, 590);
   });
-  artNames[artSlider.activeIndex].classList.add("visible", "anim-prev");
-  artNames[artSlider.previousIndex].classList.add("anim-prev-opac");
-  artNavPrev.style.pointerEvents = "none";
-  setTimeout(() => {
-    artNavPrev.style.pointerEvents = "auto";
-    artNames[artSlider.previousIndex].classList.remove("visible");
-    artNames[artSlider.previousIndex].classList.remove("anim-prev-opac");
-  }, 590);
-});
 
-artNavNext.addEventListener("click", () => {
-  artSlider.slideNext();
-  artNames.forEach((item) => {
-    item.classList.remove("anim-prev", "anim-next");
+artNavNext &&
+  artNavNext.addEventListener("click", () => {
+    artSlider.slideNext();
+    artNames.forEach((item) => {
+      item.classList.remove("anim-prev", "anim-next");
+    });
+    artNames[artSlider.activeIndex].classList.add("visible", "anim-next");
+    artNames[artSlider.previousIndex].classList.add("anim-next-opac");
+    artNavNext.style.pointerEvents = "none";
+
+    setTimeout(() => {
+      artNavNext.style.pointerEvents = "auto";
+
+      artNames[artSlider.previousIndex].classList.remove("visible");
+      artNames[artSlider.previousIndex].classList.remove("anim-next-opac");
+    }, 690);
   });
-  artNames[artSlider.activeIndex].classList.add("visible", "anim-next");
-  artNames[artSlider.previousIndex].classList.add("anim-next-opac");
-  artNavNext.style.pointerEvents = "none";
-
-  setTimeout(() => {
-    artNavNext.style.pointerEvents = "auto";
-
-    artNames[artSlider.previousIndex].classList.remove("visible");
-    artNames[artSlider.previousIndex].classList.remove("anim-next-opac");
-  }, 690);
-});
 
 const manCur = document.querySelector(
   ".man__bottom-pagination .pagination-current"

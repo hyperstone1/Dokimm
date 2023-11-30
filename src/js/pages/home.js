@@ -11,6 +11,8 @@ import {
 } from "swiper/modules";
 import remToPx from "../utils/rem";
 import { screenWidth } from "../utils/contants";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 document.addEventListener("DOMContentLoaded", () => {
   const pagCurSwiper1 = document.querySelector(
@@ -439,6 +441,18 @@ document.addEventListener("DOMContentLoaded", () => {
       //     advantagesRight.slidePrev();
       //   },
       // },
+    });
+    const wedoCardsTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".advantages",
+        pin: ".advantages",
+        start: "top 12%",
+        scrub: true,
+        // markers: true,
+        end: () =>
+          "+=" +
+          advantagesRight.slides.length * advantagesRight[0].offsetHeight,
+      },
     });
 
     var isAnimating = false;

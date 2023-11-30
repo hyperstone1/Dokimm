@@ -377,8 +377,9 @@
     overflow: hidden;
     .swiper-slide {
       width: 57.8rem;
-      height: 45.4rem;
+      height: 46.4rem;
       transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
+      will-change: width, height;
     }
 
     &-item {
@@ -393,7 +394,7 @@
       }
       &.swiper-slide-active {
         width: 57.8rem !important;
-        height: 45.4rem !important;
+        height: 46.4rem !important;
       }
     }
     &-img {
