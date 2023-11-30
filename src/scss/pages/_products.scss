@@ -194,10 +194,10 @@
       height: 63.5rem;
       overflow: initial !important;
       transition-property: transform, opacity, width, height !important;
-      transition: width 1s ease-in-out, height 1s ease-in-out,
-        transform 0.3s ease-in-out !important;
+      transition: width 0.6s ease-in-out, height 0.6s ease-in-out;
       &:not(.swiper-slide-active, .swiper-slide-prev, .swiper-slide-next) {
         transform: translateX(200rem) !important;
+        transition: transform 0.4s ease-in-out !important;
       }
       img {
         width: 100%;

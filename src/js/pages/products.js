@@ -68,7 +68,7 @@ const manufacSlider = new Swiper(".manufacturing__slider", {
   centeredSlides: true,
   allowSlidePrev: false,
   allowSlideNext: false,
-  speed: 700,
+  speed: 600,
   effect: "creative",
   navigation: {
     prevEl: ".manufacturing__top-navigation .navigation-prev",

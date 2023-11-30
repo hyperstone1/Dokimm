@@ -393,7 +393,7 @@ module.exports = {
   target,
   devtool,
   devServer: {
-    static: "./dist",
+    // static: "./dist",
     port: 3000,
     open: true,
     hot: true,
