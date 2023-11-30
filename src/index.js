@@ -5,6 +5,7 @@ import "./js/pages/home";
 import "./js/pages/catalog";
 import "./js/pages/podcategory";
 import "./js/pages/about";
+import "./js/pages/products";
 import "./js/components/form";
 import "./js/components/header";
 import "./js/components/filter";
