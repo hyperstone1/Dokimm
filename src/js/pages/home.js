@@ -429,33 +429,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const advantagesLeft = new Swiper(".advantages__left-slider", {
-      // direction: "vertical",
       slidesPerView: 1,
       speed: 1500,
       allowTouchMove: false,
-      // on: {
-      //   slideNextTransitionStart: function (swiper) {
-      //     advantagesRight.slideNext();
-      //   },
-      //   slidePrevTransitionStart: function (swiper) {
-      //     advantagesRight.slidePrev();
-      //   },
-      // },
-    });
-    const wedoCardsTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".advantages",
-        pin: ".advantages",
-        start: "top 12%",
-        scrub: true,
-        // markers: true,
-        end: () =>
-          "+=" +
-          advantagesRight.slides.length * advantagesRight[0].offsetHeight,
-      },
     });
 
     var isAnimating = false;
+    var isScrollBlocked = false;
 
     advantagesRight.on("slideChangeTransitionStart", function () {
       isAnimating = true;
@@ -464,24 +444,23 @@ document.addEventListener("DOMContentLoaded", () => {
     advantagesRight.on("slideChangeTransitionEnd", function () {
       isAnimating = false;
     });
-
     advantages.addEventListener("wheel", function (event) {
-      if (isAnimating) {
+      if (isAnimating || isScrollBlocked) {
         event.preventDefault();
         return;
       }
+
       var deltaY = event.deltaY;
       var isScrollingDown = deltaY > 0;
-      var isAtBeginning =
-        advantagesRight.isBeginning && advantagesLeft.isBeginning;
       var isAtEnd = advantagesRight.isEnd && advantagesLeft.isEnd;
 
       if (
         (isScrollingDown && !isAtEnd) ||
-        (!isScrollingDown && !isAtBeginning)
+        (!isScrollingDown && !advantagesRight.isBeginning)
       ) {
-        // Разрешаем скролл только если не достигнут начало или конец слайдера
-        event.preventDefault();
+        if (!isScrollBlocked) {
+          event.preventDefault();
+        }
 
         if (isScrollingDown) {
           // Прокрутка вниз - перейти к следующему слайду
