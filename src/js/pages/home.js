@@ -48,19 +48,19 @@ document.addEventListener("DOMContentLoaded", () => {
   var init = false;
   var processList;
 
-  const advanSliderMob = new Swiper(".advantages__content-bottom", {
-    slidesPerView: 1,
-    spaceBetween: 270,
-    speed: 1000,
-    on: {
-      init: function (swiper) {
-        advanEnd.textContent = swiper.slides.length;
-      },
-      slideChange: function (swiper) {
-        advanStart.textContent = swiper.activeIndex + 1;
-      },
-    },
-  });
+  // const advanSliderMob = new Swiper(".advantages__content-bottom", {
+  //   slidesPerView: 1,
+  //   spaceBetween: 270,
+  //   speed: 1000,
+  //   on: {
+  //     init: function (swiper) {
+  //       advanEnd.textContent = swiper.slides.length;
+  //     },
+  //     slideChange: function (swiper) {
+  //       advanStart.textContent = swiper.activeIndex + 1;
+  //     },
+  //   },
+  // });
 
   const swiper1 = new Swiper(".category__list", {
     slidesPerView: "auto",
@@ -487,42 +487,88 @@ document.addEventListener("DOMContentLoaded", () => {
     const slidesLeftAdv = gsap.utils.toArray(
       ".swiper-slide.advantages__left-slide"
     );
+    if (screenWidth < 769) {
+      const slidesAdvanMob = document.querySelectorAll(
+        ".advantages__right-wrapper .swiper-slide"
+      );
+      const contentSlider = document.querySelector(
+        ".advantages__content-slider"
+      );
+      const advanBottom = document.querySelector(
+        ".advantages__content-bottom .swiper-wrapper"
+      );
+      const slidesBottom = gsap.utils.toArray(
+        ".advantages__content-item.swiper-slide"
+      );
+
+      const timeLineAdv = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".advantages",
+          pin: ".advantages",
+          // pinSpacer: true,
+          start: "top",
+          scrub: 2,
+          end: () =>
+            "+=" +
+            (slidesAdvan.length * slidesAdvan[0].offsetHeight +
+              contentSlider.offsetHeight +
+              slidesBottom.length * slidesBottom[0].offsetWidth),
+          // markers: true,
+        },
+      });
+      console.log("contentSlider.offsetHeight: ", contentSlider.scrollHeight);
+      console.log("advanWrapper: ", advanWrapper.scrollHeight);
+      console.log(
+        "percent: ",
+        (contentSlider.offsetHeight * 100) /
+          (advanWrapper.scrollHeight - contentSlider.offsetHeight)
+      );
+      timeLineAdv.to(advanWrapper, {
+        yPercent: -(
+          (slidesAdvan.length - 1) * 100 +
+          (contentSlider.offsetHeight * 100) / slidesAdvan[0].offsetHeight
+        ),
+      });
+      console.log("advanBottom.width: ", advanBottom.scrollWidth);
+      console.log("slidesBottom.width: ", slidesBottom[0].scrollWidth);
+      timeLineAdv.to(advanBottom, {
+        xPercent: -((slidesBottom.length - 1) * 100 + 5),
+      });
+
+      // timeLineAdv.to(
+      //   advLeftWrapper,
+      //   {
+      //     xPercent: -((slidesLeftAdv.length - 1) * 100),
+      //   },
+      //   "<"
+      // );
+    } else {
+      const timeLineAdv = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".advantages",
+          pin: ".advantages",
+          // pinSpacer: true,
+          start: "top",
+          scrub: 1,
+          end: () => "+=" + slidesAdvan.length * slidesAdvan[0].offsetHeight,
+          // markers: true,
+        },
+      });
+
+      timeLineAdv.to(advanWrapper, {
+        yPercent: -((slidesAdvan.length - 1) * 100),
+      });
+
+      timeLineAdv.to(
+        advLeftWrapper,
+        {
+          xPercent: -((slidesLeftAdv.length - 1) * 100),
+        },
+        "<"
+      );
+    }
+
     console.log(slidesAdvan);
-    const timeLineAdv = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".advantages",
-        pin: ".advantages",
-        // pinSpacer: true,
-        start: "top",
-        scrub: 1,
-        end: () => "+=" + slidesAdvan.length * slidesAdvan[0].offsetHeight,
-        markers: true,
-        // snap: {
-        //   snapTo: 1 / (slidesAdvan.length - 1),
-        //   duration: { min: 0.1, max: 0.6 },
-        //   ease: "power2.inOut",
-        // },
-        // onUpdate: (self) => {
-        //   const scrollProgress = self.progress;
-        //   const totalSlides = slidesAdvan.length;
-        //   const currentSlide = Math.round(scrollProgress * (totalSlides - 1));
-
-        //   // Ваш код обновления слайдов, например, вызов goToSlide(currentSlide)
-        // },
-      },
-    });
-
-    timeLineAdv.to(advanWrapper, {
-      yPercent: -((slidesAdvan.length - 1) * 100),
-    });
-
-    timeLineAdv.to(
-      advLeftWrapper,
-      {
-        xPercent: -((slidesLeftAdv.length - 1) * 100),
-      },
-      "<"
-    );
   }
 
   window.addEventListener("load", swiperCard);
