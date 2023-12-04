@@ -1094,7 +1094,18 @@
     &-wrapper {
       // transition-timing-function: cubic-bezier(0.22, 1.05, 0.79, 0.05);
       // transition-timing-function: cubic-bezier(0.2, 1.13, 0.68, 0.14);
+      flex-direction: column;
+      scroll-snap-type: mandatory;
+      scroll-snap-points-y: repeat(100vh);
+      scroll-snap-type: y mandatory;
     }
+    &-slide {
+      padding-top: 0;
+      height: 100%;
+    }
+    // &.swiper-slide {
+
+    // }
     &-slider {
       width: 100%;
       overflow: hidden;
@@ -1108,7 +1119,7 @@
       }
     }
     &-slide {
-      padding-top: 18.4rem;
+      // padding-top: 18.4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;

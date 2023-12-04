@@ -13,6 +13,7 @@ import remToPx from "../utils/rem";
 import { screenWidth } from "../utils/contants";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/all";
 
 document.addEventListener("DOMContentLoaded", () => {
   const pagCurSwiper1 = document.querySelector(
@@ -412,67 +413,116 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const advantages = document.querySelector(".advantages");
   if (advantages) {
-    const advantagesRight = new Swiper(".advantages__right-slider", {
-      direction: "vertical",
-      slidesPerView: "auto",
-      spaceBetween: remToPx(5),
-      speed: 1000,
-      allowTouchMove: false,
-      breakpoints: {
-        769: {
-          irection: "vertical",
-          slidesPerView: 1,
-          spaceBetween: remToPx(16),
-          speed: 1500,
-        },
+    // const advantagesRight = new Swiper(".advantages__right-slider", {
+    //   direction: "vertical",
+    //   slidesPerView: "auto",
+    //   spaceBetween: remToPx(5),
+    //   speed: 1000,
+    //   allowTouchMove: false,
+    //   breakpoints: {
+    //     769: {
+    //       irection: "vertical",
+    //       slidesPerView: 1,
+    //       spaceBetween: remToPx(16),
+    //       speed: 1500,
+    //     },
+    //   },
+    // });
+
+    // const advantagesLeft = new Swiper(".advantages__left-slider", {
+    //   slidesPerView: 1,
+    //   speed: 1500,
+    //   allowTouchMove: false,
+    // });
+
+    // var isAnimating = false;
+    // var isScrollBlocked = false;
+
+    // advantagesRight.on("slideChangeTransitionStart", function () {
+    //   isAnimating = true;
+    // });
+
+    // advantagesRight.on("slideChangeTransitionEnd", function () {
+    //   isAnimating = false;
+    // });
+
+    // advantages.addEventListener("wheel", function (event) {
+    //   if (isAnimating || isScrollBlocked) {
+    //     event.preventDefault();
+    //     return;
+    //   }
+
+    //   var deltaY = event.deltaY;
+    //   var isScrollingDown = deltaY > 0;
+    //   var isAtEnd = advantagesRight.isEnd && advantagesLeft.isEnd;
+
+    //   if (
+    //     (isScrollingDown && !isAtEnd) ||
+    //     (!isScrollingDown && !advantagesRight.isBeginning)
+    //   ) {
+    //     if (!isScrollBlocked) {
+    //       event.preventDefault();
+    //     }
+
+    //     if (isScrollingDown) {
+    //       // Прокрутка вниз - перейти к следующему слайду
+    //       advantagesRight.slideNext();
+    //       advantagesLeft.slideNext();
+    //     } else {
+    //       // Прокрутка вверх - перейти к предыдущему слайду
+    //       advantagesRight.slidePrev();
+    //       advantagesLeft.slidePrev();
+    //     }
+    //   }
+    // });
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollToPlugin);
+    const advanWrapper = document.querySelector(
+      ".advantages__right-slider .swiper-wrapper"
+    );
+    const advLeftWrapper = document.querySelector(
+      ".advantages__left-slider .swiper-wrapper"
+    );
+    const slidesAdvan = gsap.utils.toArray(".advantages__right-slide--desc");
+    const slidesLeftAdv = gsap.utils.toArray(
+      ".swiper-slide.advantages__left-slide"
+    );
+    console.log(slidesAdvan);
+    const timeLineAdv = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".advantages",
+        pin: ".advantages",
+        // pinSpacer: true,
+        start: "top",
+        scrub: 1,
+        end: () => "+=" + slidesAdvan.length * slidesAdvan[0].offsetHeight,
+        markers: true,
+        // snap: {
+        //   snapTo: 1 / (slidesAdvan.length - 1),
+        //   duration: { min: 0.1, max: 0.6 },
+        //   ease: "power2.inOut",
+        // },
+        // onUpdate: (self) => {
+        //   const scrollProgress = self.progress;
+        //   const totalSlides = slidesAdvan.length;
+        //   const currentSlide = Math.round(scrollProgress * (totalSlides - 1));
+
+        //   // Ваш код обновления слайдов, например, вызов goToSlide(currentSlide)
+        // },
       },
     });
 
-    const advantagesLeft = new Swiper(".advantages__left-slider", {
-      slidesPerView: 1,
-      speed: 1500,
-      allowTouchMove: false,
+    timeLineAdv.to(advanWrapper, {
+      yPercent: -((slidesAdvan.length - 1) * 100),
     });
 
-    var isAnimating = false;
-    var isScrollBlocked = false;
-
-    advantagesRight.on("slideChangeTransitionStart", function () {
-      isAnimating = true;
-    });
-
-    advantagesRight.on("slideChangeTransitionEnd", function () {
-      isAnimating = false;
-    });
-    advantages.addEventListener("wheel", function (event) {
-      if (isAnimating || isScrollBlocked) {
-        event.preventDefault();
-        return;
-      }
-
-      var deltaY = event.deltaY;
-      var isScrollingDown = deltaY > 0;
-      var isAtEnd = advantagesRight.isEnd && advantagesLeft.isEnd;
-
-      if (
-        (isScrollingDown && !isAtEnd) ||
-        (!isScrollingDown && !advantagesRight.isBeginning)
-      ) {
-        if (!isScrollBlocked) {
-          event.preventDefault();
-        }
-
-        if (isScrollingDown) {
-          // Прокрутка вниз - перейти к следующему слайду
-          advantagesRight.slideNext();
-          advantagesLeft.slideNext();
-        } else {
-          // Прокрутка вверх - перейти к предыдущему слайду
-          advantagesRight.slidePrev();
-          advantagesLeft.slidePrev();
-        }
-      }
-    });
+    timeLineAdv.to(
+      advLeftWrapper,
+      {
+        xPercent: -((slidesLeftAdv.length - 1) * 100),
+      },
+      "<"
+    );
   }
 
   window.addEventListener("load", swiperCard);

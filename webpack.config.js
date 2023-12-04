@@ -184,7 +184,7 @@ module.exports = {
     clean: true,
     //название js файла в билде
     // [name] - стандартный по вебпаку (main), [contenthash] - добавляептся хэш к названию
-    filename: "[name][contenthash].js",
+    filename: "[name].js",
     // assetModuleFilename: "assets/images",
   },
 
@@ -193,8 +193,8 @@ module.exports = {
 
     ...pages,
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash:8].css",
-      chunkFilename: "[name].[contenthash:8].css",
+      filename: "[name].css",
+      chunkFilename: "[name].css",
     }),
     new ImageMinimizerPlugin({
       minimizer: {
@@ -238,10 +238,6 @@ module.exports = {
               from: videoSourcePath,
               to: videoDestPath,
             },
-            // {
-            //   from: videoSourcePath,
-            //   to: videoDestPath,
-            // },
           ],
         })
       : new CopyPlugin({
