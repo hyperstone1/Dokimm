@@ -487,7 +487,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const slidesLeftAdv = gsap.utils.toArray(
       ".swiper-slide.advantages__left-slide"
     );
-    if (screenWidth < 769) {
+    if (screenWidth < 769 && slidesAdvan.length > 0) {
       const slidesAdvanMob = document.querySelectorAll(
         ".advantages__right-wrapper .swiper-slide"
       );
@@ -543,29 +543,31 @@ document.addEventListener("DOMContentLoaded", () => {
       //   "<"
       // );
     } else {
-      const timeLineAdv = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".advantages",
-          pin: ".advantages",
-          // pinSpacer: true,
-          start: "top",
-          scrub: 1,
-          end: () => "+=" + slidesAdvan.length * slidesAdvan[0].offsetHeight,
-          // markers: true,
-        },
-      });
+      if (slidesAdvan.length > 0) {
+        const timeLineAdv = gsap.timeline({
+          scrollTrigger: {
+            trigger: ".advantages",
+            pin: ".advantages",
+            // pinSpacer: true,
+            start: "top",
+            scrub: 1,
+            end: () => "+=" + slidesAdvan.length * slidesAdvan[0].offsetHeight,
+            // markers: true,
+          },
+        });
 
-      timeLineAdv.to(advanWrapper, {
-        yPercent: -((slidesAdvan.length - 1) * 100),
-      });
+        timeLineAdv.to(advanWrapper, {
+          yPercent: -((slidesAdvan.length - 1) * 100),
+        });
 
-      timeLineAdv.to(
-        advLeftWrapper,
-        {
-          xPercent: -((slidesLeftAdv.length - 1) * 100),
-        },
-        "<"
-      );
+        timeLineAdv.to(
+          advLeftWrapper,
+          {
+            xPercent: -((slidesLeftAdv.length - 1) * 100),
+          },
+          "<"
+        );
+      }
     }
 
     console.log(slidesAdvan);
