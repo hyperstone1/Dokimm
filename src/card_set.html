@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Карточка</title>
+  </head>
+  <body>
+    <include src="./components/header.html"></include>
+    <main>
+      <section class="banner card">
+        <div class="banner__card-container container">
+          <div class="banner__card-left">
+            <div class="breadcrumb card">
+              <div class="breadcrumb__routes">
+                <a href="#" class="breadcrumb__routes-name">Каталог</a>
+                <a href="#" class="breadcrumb__routes-name">Кольца</a>
+                <a href="#" class="breadcrumb__routes-name"
+                  >Обручальные кольца</a
+                >
+                <a href="#" class="breadcrumb__routes-name active"
+                  >Кольцо Eternal classic</a
+                >
+              </div>
+            </div>
+            <div class="banner__card-controls">
+              <div class="banner__card-pagination pagination">
+                <div class="pagination-current">1</div>
+                <div class="pagination-last">4</div>
+              </div>
+              <div class="banner__card-navigation navigation">
+                <div class="navigation-prev">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="61"
+                    height="12"
+                    viewBox="0 0 61 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M0.505024 5.50502C0.231659 5.77839 0.231659 6.2216 0.505024 6.49497L4.9598 10.9497C5.23317 11.2231 5.67638 11.2231 5.94975 10.9497C6.22311 10.6764 6.22311 10.2332 5.94975 9.95979L1.98995 5.99999L5.94975 2.0402C6.22311 1.76683 6.22311 1.32362 5.94975 1.05025C5.67638 0.776881 5.23317 0.776881 4.9598 1.05025L0.505024 5.50502ZM61 5.3L1 5.29999L1 6.69999L61 6.7L61 5.3Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
+                <div class="navigation-next">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="61"
+                    height="12"
+                    viewBox="0 0 61 12"
+                    fill="none"
+                  >
+                    <path
+                      d="M60.495 5.50503C60.7683 5.77839 60.7683 6.22161 60.495 6.49497L56.0402 10.9497C55.7668 11.2231 55.3236 11.2231 55.0503 10.9497C54.7769 10.6764 54.7769 10.2332 55.0503 9.9598L59.0101 6L55.0503 2.0402C54.7769 1.76684 54.7769 1.32362 55.0503 1.05025C55.3236 0.776886 55.7668 0.776886 56.0402 1.05025L60.495 5.50503ZM0 5.3L60 5.3L60 6.7L0 6.7L0 5.3Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="banner__card-slider">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide banner__card-slide">
+                <div class="banner__card-item">
+                  <img src="./assets/images/banner_ring.png" alt="" />
+                </div>
+              </div>
+              <div class="swiper-slide banner__card-slide">
+                <div class="banner__card-item">
+                  <img src="./assets/images/banner_ring.png" alt="" />
+                </div>
+              </div>
+              <div class="swiper-slide banner__card-slide">
+                <div class="banner__card-item">
+                  <img src="./assets/images/banner_ring.png" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="banner__card-model">
+              <div class="banner__card-article">АРТИКУЛ: 9214</div>
+              <div class="banner__card-date">ИЗГОТОВИМ К 08-11-2023</div>
+            </div>
+          </div>
+          <div class="banner__card-info">
+            <div class="banner__card-text">
+              Кольцо выполнено в одном из самых популярных вариантов
+              бриллиантовой дорожки, которая моментально приковывает к себе
+              взгляды.
+            </div>
+            <div class="banner__card-imgs">
+              <div class="swiper-wrapper">
+                <div class="banner__card-img swiper-slide">
+                  <img src="./assets/images/banner_card_img.png" alt="" />
+                </div>
+                <div class="banner__card-img swiper-slide">
+                  <img src="./assets/images/banner_card_img.png" alt="" />
+                </div>
+                <div class="banner__card-img swiper-slide">
+                  <img src="./assets/images/banner_card_img.png" alt="" />
+                </div>
+              </div>
+            </div>
+
+            <div class="banner__card-desc">
+              Золото 750 пробы, со вставками из 25 бриллиантов, диаметром 2.5
+              мм. в огранке «Принцесса», общим весом в 2.0 карат.
+            </div>
+          </div>
+          <div class="banner__card-title">Кольцо Eternal classic</div>
+          <button class="btn banner__card-btn btn-modal">
+            <div class="btn-arrow">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="109"
+                height="16"
+                viewBox="0 0 109 16"
+                fill="none"
+              >
+                <path
+                  d="M108.707 8.71101C109.098 8.32049 109.098 7.68732 108.707 7.2968L102.343 0.932838C101.953 0.542314 101.319 0.542314 100.929 0.932838C100.538 1.32336 100.538 1.95653 100.929 2.34705L106.586 8.00391L100.929 13.6608C100.538 14.0513 100.538 14.6844 100.929 15.075C101.319 15.4655 101.953 15.4655 102.343 15.075L108.707 8.71101ZM0 9.00391H108V7.00391H0V9.00391Z"
+                  fill="white"
+                />
+              </svg>
+              <img src="./assets/images/arrows.svg" alt="" />
+            </div>
+            <div class="btn-back"></div>
+            <div class="btn-text">
+              <div class="btn-text--first">заказать</div>
+              <div class="btn-text--second">украшение</div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <section class="haracteristics">
+        <div class="haracteristics__container container">
+          <div class="haracteristics__title title">ХАРАКТЕРИСТИКИ кольца</div>
+          <div class="haracteristics__main">
+            <div class="haracteristics__main-border">
+              <div class="haracteristics__main-border-top"></div>
+              <div class="haracteristics__main-border-left"></div>
+              <div class="haracteristics__main-border-bottom"></div>
+              <div class="haracteristics__main-border-right"></div>
+            </div>
+            <div class="haracteristics__left">
+              <div class="haracteristics__left-wrapper">
+                <div class="haracteristics__left-controls">
+                  <div class="haracteristics__left-pagination pagination">
+                    <div class="pagination-current">1</div>
+                    <div class="pagination-last">4</div>
+                  </div>
+                  <div class="haracteristics__left-navigation navigation">
+                    <div class="navigation-prev">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="61"
+                        height="12"
+                        viewBox="0 0 61 12"
+                        fill="none"
+                      >
+                        <path
+                          d="M0.505024 5.50502C0.231659 5.77839 0.231659 6.2216 0.505024 6.49497L4.9598 10.9497C5.23317 11.2231 5.67638 11.2231 5.94975 10.9497C6.22311 10.6764 6.22311 10.2332 5.94975 9.95979L1.98995 5.99999L5.94975 2.0402C6.22311 1.76683 6.22311 1.32362 5.94975 1.05025C5.67638 0.776881 5.23317 0.776881 4.9598 1.05025L0.505024 5.50502ZM61 5.3L1 5.29999L1 6.69999L61 6.7L61 5.3Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div class="navigation-next">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="61"
+                        height="12"
+                        viewBox="0 0 61 12"
+                        fill="none"
+                      >
+                        <path
+                          d="M60.495 5.50503C60.7683 5.77839 60.7683 6.22161 60.495 6.49497L56.0402 10.9497C55.7668 11.2231 55.3236 11.2231 55.0503 10.9497C54.7769 10.6764 54.7769 10.2332 55.0503 9.9598L59.0101 6L55.0503 2.0402C54.7769 1.76684 54.7769 1.32362 55.0503 1.05025C55.3236 0.776886 55.7668 0.776886 56.0402 1.05025L60.495 5.50503ZM0 5.3L60 5.3L60 6.7L0 6.7L0 5.3Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="haracteristics__left-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="./assets/images/haracteristic.png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="./assets/images/haracteristic.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="haracteristics__right">
+              <div class="haracteristics__content">
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+              </div>
+              <div class="haracteristics__right-info">
+                <div class="haracteristics__right-title">подробнее:</div>
+                <div class="haracteristics__right-wrapper">
+                  <div class="haracteristics__right-item">
+                    <div class="haracteristics__right-name">Сроки:</div>
+                    <div class="haracteristics__right-desc">
+                      Изготовим к 08-11-2023
+                    </div>
+                  </div>
+                  <div class="haracteristics__right-item">
+                    <div class="haracteristics__right-name">Вставки:</div>
+                    <div class="haracteristics__right-desc">
+                      25 бриллиантов диаметром 2.5 мм., 3/4, огранки
+                      «принцесса».
+                    </div>
+                  </div>
+                  <div class="haracteristics__right-item">
+                    <div class="haracteristics__right-name">Упаковка:</div>
+                    <div class="haracteristics__right-desc">
+                      Предложим на выбор несколько вариантов стильной упаковки и
+                      бережно доставим вам прямо в руки.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="haracteristics">
+        <div class="haracteristics__container container">
+          <div class="haracteristics__title title">ХАРАКТЕРИСТИКИ серег</div>
+          <div class="haracteristics__main">
+            <div class="haracteristics__main-border">
+              <div class="haracteristics__main-border-top"></div>
+              <div class="haracteristics__main-border-left"></div>
+              <div class="haracteristics__main-border-bottom"></div>
+              <div class="haracteristics__main-border-right"></div>
+            </div>
+            <div class="haracteristics__left">
+              <div class="haracteristics__left-wrapper">
+                <div class="haracteristics__left-controls">
+                  <div class="haracteristics__left-pagination pagination">
+                    <div class="pagination-current">1</div>
+                    <div class="pagination-last">4</div>
+                  </div>
+                  <div class="haracteristics__left-navigation navigation">
+                    <div class="navigation-prev">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="61"
+                        height="12"
+                        viewBox="0 0 61 12"
+                        fill="none"
+                      >
+                        <path
+                          d="M0.505024 5.50502C0.231659 5.77839 0.231659 6.2216 0.505024 6.49497L4.9598 10.9497C5.23317 11.2231 5.67638 11.2231 5.94975 10.9497C6.22311 10.6764 6.22311 10.2332 5.94975 9.95979L1.98995 5.99999L5.94975 2.0402C6.22311 1.76683 6.22311 1.32362 5.94975 1.05025C5.67638 0.776881 5.23317 0.776881 4.9598 1.05025L0.505024 5.50502ZM61 5.3L1 5.29999L1 6.69999L61 6.7L61 5.3Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                    <div class="navigation-next">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="61"
+                        height="12"
+                        viewBox="0 0 61 12"
+                        fill="none"
+                      >
+                        <path
+                          d="M60.495 5.50503C60.7683 5.77839 60.7683 6.22161 60.495 6.49497L56.0402 10.9497C55.7668 11.2231 55.3236 11.2231 55.0503 10.9497C54.7769 10.6764 54.7769 10.2332 55.0503 9.9598L59.0101 6L55.0503 2.0402C54.7769 1.76684 54.7769 1.32362 55.0503 1.05025C55.3236 0.776886 55.7668 0.776886 56.0402 1.05025L60.495 5.50503ZM0 5.3L60 5.3L60 6.7L0 6.7L0 5.3Z"
+                          fill="white"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="haracteristics__left-slider">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <img src="./assets/images/haracteristic.png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                      <img src="./assets/images/haracteristic.png" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="haracteristics__right">
+              <div class="haracteristics__content">
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+                <div class="haracteristics__content-item">
+                  <div class="haracteristics__content-title">ВЕС МЕТАЛЛА:</div>
+                  <div class="haracteristics__content-desc">2.89 гр.</div>
+                </div>
+              </div>
+              <div class="haracteristics__right-info">
+                <div class="haracteristics__right-title">подробнее:</div>
+                <div class="haracteristics__right-wrapper">
+                  <div class="haracteristics__right-item">
+                    <div class="haracteristics__right-name">Сроки:</div>
+                    <div class="haracteristics__right-desc">
+                      Изготовим к 08-11-2023
+                    </div>
+                  </div>
+                  <div class="haracteristics__right-item">
+                    <div class="haracteristics__right-name">Вставки:</div>
+                    <div class="haracteristics__right-desc">
+                      25 бриллиантов диаметром 2.5 мм., 3/4, огранки
+                      «принцесса».
+                    </div>
+                  </div>
+                  <div class="haracteristics__right-item">
+                    <div class="haracteristics__right-name">Упаковка:</div>
+                    <div class="haracteristics__right-desc">
+                      Предложим на выбор несколько вариантов стильной упаковки и
+                      бережно доставим вам прямо в руки.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="popular">
+        <div class="popular_container container">
+          <div class="popular__title title">ПОПУЛЯРНЫЕ ТОВАРЫ</div>
+          <div class="catalog__list">
+            <a href="" class="catalog__list-item">
+              <div class="catalog__list-img">
+                <img src="./assets/images/ring_catalog_1.png" alt="" />
+                <div class="catalog__list-img--hover">
+                  <img src="./assets/images/catalog/card_hover.png" alt="" />
+                </div>
+              </div>
+
+              <div class="catalog__list-bottom">
+                <div class="catalog__list-name">
+                  <div class="catalog__list-name--first">кольцо</div>
+                  <div class="catalog__list-name--second">eternal classic</div>
+                </div>
+                <div class="catalog__list-price">от 78 000 ₽</div>
+              </div>
+            </a>
+            <a href="" class="catalog__list-item">
+              <div class="catalog__list-img">
+                <img src="./assets/images/ring_catalog_1.png" alt="" />
+                <div class="catalog__list-img--hover">
+                  <img src="./assets/images/catalog/card_hover.png" alt="" />
+                </div>
+              </div>
+
+              <div class="catalog__list-bottom">
+                <div class="catalog__list-name">
+                  <div class="catalog__list-name--first">кольцо</div>
+                  <div class="catalog__list-name--second">eternal classic</div>
+                </div>
+                <div class="catalog__list-price">от 78 000 ₽</div>
+              </div>
+            </a>
+            <a href="" class="catalog__list-item">
+              <div class="catalog__list-img">
+                <img src="./assets/images/ring_catalog_1.png" alt="" />
+                <div class="catalog__list-img--hover">
+                  <img src="./assets/images/catalog/card_hover.png" alt="" />
+                </div>
+              </div>
+
+              <div class="catalog__list-bottom">
+                <div class="catalog__list-name">
+                  <div class="catalog__list-name--first">кольцо</div>
+                  <div class="catalog__list-name--second">eternal classic</div>
+                </div>
+                <div class="catalog__list-price">от 78 000 ₽</div>
+              </div>
+            </a>
+          </div>
+          <div class="catalog__list mob">
+            <div class="catalog__list-item">
+              <div class="catalog__list-img">
+                <img src="./assets/images/ring_catalog_1.png" alt="" />
+              </div>
+              <div class="catalog__list-bottom">
+                <div class="catalog__list-name">
+                  <div class="catalog__list-name--first">кольцо</div>
+                  <div class="catalog__list-name--second">eternal classic</div>
+                </div>
+                <div class="catalog__list-price">от 78 000 ₽</div>
+              </div>
+            </div>
+            <div class="catalog__list-item">
+              <div class="catalog__list-img">
+                <img src="./assets/images/ring_catalog_1.png" alt="" />
+              </div>
+              <div class="catalog__list-bottom">
+                <div class="catalog__list-name">
+                  <div class="catalog__list-name--first">кольцо</div>
+                  <div class="catalog__list-name--second">eternal classic</div>
+                </div>
+                <div class="catalog__list-price">от 78 000 ₽</div>
+              </div>
+            </div>
+            <div class="catalog__list-item">
+              <div class="catalog__list-img">
+                <img src="./assets/images/ring_catalog_1.png" alt="" />
+              </div>
+              <div class="catalog__list-bottom">
+                <div class="catalog__list-name">
+                  <div class="catalog__list-name--first">кольцо</div>
+                  <div class="catalog__list-name--second">eternal classic</div>
+                </div>
+                <div class="catalog__list-price">от 78 000 ₽</div>
+              </div>
+            </div>
+            <div class="catalog__list-item">
+              <div class="catalog__list-img">
+                <img src="./assets/images/ring_catalog_1.png" alt="" />
+              </div>
+              <div class="catalog__list-bottom">
+                <div class="catalog__list-name">
+                  <div class="catalog__list-name--first">кольцо</div>
+                  <div class="catalog__list-name--second">eternal classic</div>
+                </div>
+                <div class="catalog__list-price">от 78 000 ₽</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <include src="./components/viewed.html"></include>
+    </main>
+    <include src="./html/components/footer.html"></include>
+  </body>
+</html>

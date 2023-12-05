@@ -16,22 +16,17 @@ const navCard = document.querySelector(".banner__card-navigation");
 const navCardNext = navCard && navCard.querySelector(".navigation-next");
 const navCardPrev = navCard && navCard.querySelector(".navigation-prev");
 
-const navHaract = document.querySelector(".haracteristics__left-navigation");
-const harPrev = navHaract && navHaract.querySelector(".navigation-prev");
-const harNext = navHaract && navHaract.querySelector(".navigation-next");
+const navHaract = document.querySelectorAll(".haracteristics__left-navigation");
+// const harPrev = navHaract && navHaract.querySelector(".navigation-prev");
+// const harNext = navHaract && navHaract.querySelector(".navigation-next");
+
+const haractSliders = document.querySelectorAll(".haracteristics__left-slider");
 
 const bannerCur = document.querySelector(
   ".banner__card-pagination .pagination-current"
 );
 const bannerLast = document.querySelector(
   ".banner__card-pagination .pagination-last"
-);
-
-const curHarac = document.querySelector(
-  ".haracteristics__left-pagination .pagination-current"
-);
-const lastHarac = document.querySelector(
-  ".haracteristics__left-pagination .pagination-last"
 );
 
 const bannerCard1 = new Swiper(".banner__card-slider", {
@@ -92,34 +87,46 @@ navCardPrev &&
     bannerCard1.slidePrev();
     bannerCard2.slidePrev();
   });
+haractSliders.forEach((item) => {
+  const curHarac = item
+    .closest(".haracteristics__left-wrapper")
+    .querySelector(".pagination-current");
+  const lastHarac = item
+    .closest(".haracteristics__left-wrapper")
+    .querySelector(".pagination-last");
 
-const haractSlider = new Swiper(".haracteristics__left-slider", {
-  slidesPerView: 1,
-  spaceBetween: 20,
-  modules: [EffectCreative, Navigation],
-  speed: 1500,
-  slidesPerView: 1,
-  effect: "creative",
-  navigation: {
-    prevEl: harPrev,
-    nextEl: harNext,
-  },
-  creativeEffect: {
-    prev: {
-      shadow: true,
-      translate: ["-20%", 0, -1],
+  const haractSlider = new Swiper(item, {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    modules: [EffectCreative, Navigation],
+    speed: 1500,
+    slidesPerView: 1,
+    effect: "creative",
+    navigation: {
+      prevEl: item
+        .closest(".haracteristics__left-wrapper")
+        .querySelector(".navigation-prev"),
+      nextEl: item
+        .closest(".haracteristics__left-wrapper")
+        .querySelector(".navigation-next"),
     },
-    next: {
-      translate: ["100%", 0, 0],
+    creativeEffect: {
+      prev: {
+        shadow: true,
+        translate: ["-20%", 0, -1],
+      },
+      next: {
+        translate: ["100%", 0, 0],
+      },
     },
-  },
-  on: {
-    init: function (swiper) {
-      curHarac.textContent = swiper.activeIndex + 1;
-      lastHarac.textContent = swiper.slides.length;
+    on: {
+      init: function (swiper) {
+        curHarac.textContent = swiper.activeIndex + 1;
+        lastHarac.textContent = swiper.slides.length;
+      },
+      slideChange: function (swiper) {
+        curHarac.textContent = swiper.activeIndex + 1;
+      },
     },
-    slideChange: function (swiper) {
-      curHarac.textContent = swiper.activeIndex + 1;
-    },
-  },
+  });
 });

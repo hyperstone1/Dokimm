@@ -273,6 +273,14 @@
       background: url("./assets/images/card_back.png");
       background-size: 100% 100%;
       cursor: pointer;
+      &.column {
+        flex-direction: column;
+        gap: 9.5rem;
+        img {
+          width: 16.7rem;
+          height: 16.1rem;
+        }
+      }
       &.photo {
         width: 100%;
         background: none;
@@ -293,7 +301,7 @@
         width: 27.3rem;
         height: 26rem;
       }
-      &--hover {
+      & &--hover {
         position: absolute;
         top: 0;
         left: 0;
@@ -704,6 +712,13 @@
       &-img {
         width: 100%;
         height: 40rem;
+        &.column {
+          gap: 2.5rem;
+          img {
+            width: 14.7rem;
+            height: 14.1rem;
+          }
+        }
         img {
           width: 18rem;
           height: 18rem;
