@@ -321,11 +321,12 @@ document.addEventListener("DOMContentLoaded", () => {
   let swiperBanner1 = new Swiper(".banner__main-slider", {
     slidesPerView: 1,
     modules: [Navigation, Pagination, EffectCreative, Thumbs],
-    speed: 1000,
     slidesPerView: "auto",
     // effect: "slide",
     effect: screenWidth < 769 ? "slide" : "creative",
-    spaceBetween: 20,
+    speed: 2000,
+
+    spaceBetween: 0,
     centeredSlides: false,
     creativeEffect: {
       prev: {
@@ -345,12 +346,18 @@ document.addEventListener("DOMContentLoaded", () => {
         bannerCur.textContent = swiper.activeIndex + 1;
       },
     },
+    breakpoints: {
+      769: {
+        spaceBetween: 20,
+        speed: 1000,
+      },
+    },
   });
   const swiperBanner2 = new Swiper(".banner__info-slider", {
     modules: [Navigation, EffectCreative],
     slidesPerView: 1,
     effect: "creative",
-    speed: 1000,
+    speed: 2000,
     on: {
       init: function (swiper) {
         swiper.slides.forEach((item, id) => {
@@ -363,6 +370,11 @@ document.addEventListener("DOMContentLoaded", () => {
         swiper.slides.forEach((item) => {
           item.classList.remove("no-transition");
         });
+      },
+    },
+    breakpoints: {
+      769: {
+        speed: 1000,
       },
     },
   });

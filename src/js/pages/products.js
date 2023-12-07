@@ -99,12 +99,27 @@ const manufacSlider = new Swiper(".manufacturing__slider", {
   creativeEffect: {
     prev: {
       shadow: false,
-      translate: ["-255%", -120, -700],
+      translate: ["-165%", -50, -400],
     },
 
     next: {
       shadow: false,
-      translate: ["157%", -20, 0],
+      translate: ["135%", 0, 0],
+    },
+  },
+  breakpoints: {
+    769: {
+      creativeEffect: {
+        prev: {
+          shadow: false,
+          translate: ["-255%", -120, -700],
+        },
+
+        next: {
+          shadow: false,
+          translate: ["157%", -20, 0],
+        },
+      },
     },
   },
 });
@@ -114,8 +129,9 @@ const artLast = document.querySelector(".art__pagination .pagination-last");
 
 const artSlider = new Swiper(".art__slider", {
   modules: [EffectCreative, Navigation],
-  slidesPerView: 5,
-  spaceBetween: remToPx(13.6),
+
+  slidesPerView: 3,
+  spaceBetween: remToPx(8),
   speed: 1200,
   allowTouchMove: false,
   //   loop: true,
@@ -136,6 +152,12 @@ const artSlider = new Swiper(".art__slider", {
     },
     slideChange: function (swiper) {
       artCur.textContent = swiper.activeIndex + 1;
+    },
+  },
+  breakpoints: {
+    769: {
+      slidesPerView: 5,
+      spaceBetween: remToPx(13.6),
     },
   },
   //   creativeEffect: {
@@ -194,10 +216,10 @@ const manLast = document.querySelector(
 const manSlider = new Swiper(".man__slider", {
   slidesPerView: "auto",
   spaceBetween: remToPx(5.4),
-  allowTouchMove: false,
+  allowTouchMove: true,
   initialSlide: 0,
-  allowSlidePrev: false,
-  allowSlideNext: false,
+  // allowSlidePrev: false,
+  // allowSlideNext: false,
 
   centeredSlides: false,
   speed: 800,
@@ -238,6 +260,14 @@ const manSlider = new Swiper(".man__slider", {
         swiper.allowSlideNext = true; // Разрешить перелистывание слайдов вправо
       }
       manCur.textContent = swiper.activeIndex + 4;
+    },
+  },
+  breakpoints: {
+    769: {
+      allowTouchMove: false,
+      initialSlide: 0,
+      allowSlidePrev: false,
+      allowSlideNext: false,
     },
   },
 });
