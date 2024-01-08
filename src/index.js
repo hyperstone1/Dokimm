@@ -12,17 +12,24 @@ import "./js/components/filter";
 import "./js/components/collection";
 import "./js/components/haracteristics";
 import "./js/components/modal";
+import "./js/components/lightbox";
 import "./js/utils/gsap";
 import { WOW } from "wowjs";
 import "animate.css";
 import "wowjs/css/libs/animate.css";
 import ymaps from "ymaps";
 import remToPx from "./js/utils/rem";
+import { Fancybox } from "@fancyapps/ui";
+import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 const noAnim = document.querySelectorAll(".no-anim");
 noAnim.forEach((item) => {
   item.classList.remove("no-anim");
 });
+
+// Fancybox.bind("[data-fancybox]", {
+//   //
+// });
 
 new WOW({
   resetAnimation: false,
